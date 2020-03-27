@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Fallidos</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/failures/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Descripcion</th>
+          <th>Falla Del Cliente</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let failure of failures">
+          <td>{{ failure.id }}</td>
+          <td>{{ failure.description }}</td>
+          <td>{{ failure.clientFault ? 'Si' : 'No' }}</td>
+          <td>acciones</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
