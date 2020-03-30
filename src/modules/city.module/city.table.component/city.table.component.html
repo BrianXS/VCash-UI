@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Ciudades</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/cities/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Sucursal</th>
+          <th>Pais</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let city of cities">
+          <td>{{ city.id }}</td>
+          <td>{{ city.name }}</td>
+          <td>{{ city.state}}</td>
+          <td>{{ city.branch}}</td>
+          <td>{{ city.country}}</td>
+          <td>acciones</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

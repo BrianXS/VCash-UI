@@ -1,0 +1,59 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Ciudad guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Ciudad!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Ciudad</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="cityForm">
+          <div class="form-group">
+            <label for="StateName">Nombre de la Ciudad</label>
+            <input type="text"
+                   class="form-control"
+                   id="StateName"
+                   formControlName="name"
+                   placeholder="Bogota" />
+          </div>
+          <div class="form-group">
+            <label for="StateCountryId">Pais</label>
+            <select class="form-control selectpicker" data-live-search="true"
+                    id="StateCountryId"
+                    formControlName="countryId"
+                    (change)="onCountrySelection()">
+              <option *ngFor="let country of countries"
+                      [value]="country.id"
+                      [selected]="cityForm.value.countryId == country.id">{{country.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stateId">Estado / Departamento</label>
+            <select class="form-control selectpicker" data-live-search="true"
+                    id="stateId"
+                    formControlName="countryId">
+              <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+            </select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    [disabled]="!cityForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/cities" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

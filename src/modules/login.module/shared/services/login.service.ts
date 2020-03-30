@@ -9,6 +9,6 @@ export class LoginService {
   }
 
   login(loginRequest: LoginRequest) {
-    return this.http.post<LoginResponse>('http://localhost:3000/auth/login', loginRequest);
+    return this.http.post<LoginResponse>('auth/login', loginRequest);
   }
 }

@@ -10,13 +10,13 @@ export class FailuresService {
   }
 
   getAllFailures() {
-    return this.http.get<FailureResponse[]>('http://localhost:3000/failures/');
+    return this.http.get<FailureResponse[]>('failures/');
   }
 
   findFailureById() { }
 
   AddFailure(failureData: FailureRequest): Observable<any> {
-    return this.http.post('http://localhost:3000/failures/', failureData);
+    return this.http.post('failures/', failureData);
   }
 
   editFailure() { }

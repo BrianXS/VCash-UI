@@ -8,7 +8,7 @@ export class TokenVerificator {
   constructor(private http: HttpClient, private router: Router) { }
 
   verifyTokenValidity() {
-    this.http.get('http://localhost:3000/auth/verify').subscribe(response => {}, error => {
+    this.http.get('auth/verify').subscribe(response => {}, error => {
       localStorage.clear();
       this.router.navigate(['/']);
     });

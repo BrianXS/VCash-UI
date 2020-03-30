@@ -1,0 +1,49 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Pais guardado exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Pais!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Pais</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="countryForm">
+          <div class="form-group">
+            <label for="CountryName">Nombre del pais</label>
+            <input type="text"
+                   class="form-control"
+                   id="CountryName"
+                   formControlName="name"
+                   placeholder="Colombia" />
+          </div>
+          <div class="form-group">
+            <label for="CountryCode">Codigo del pais</label>
+            <input type="text"
+                   class="form-control"
+                   id="CountryCode"
+                   formControlName="code"
+                   placeholder="CO" />
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!countryForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/countries" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

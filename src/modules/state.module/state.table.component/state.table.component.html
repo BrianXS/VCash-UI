@@ -1,0 +1,33 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Estados</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/states/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Pais</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let state of states">
+          <td>{{ state.id }}</td>
+          <td>{{ state.name }}</td>
+          <td>{{ state.country}}</td>
+          <td>acciones</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
