@@ -34,7 +34,7 @@
                     formControlName="countryId">
               <option *ngFor="let country of countries"
                       [value]="country.id"
-                      [selected]="stateForm.value.countryId == country.id">{{country.name}}</option>
+                      [selected]="stateForm.value.countryId === country.id">{{country.name}}</option>
             </select>
           </div>
           <div class="form-group splitted-buttons">

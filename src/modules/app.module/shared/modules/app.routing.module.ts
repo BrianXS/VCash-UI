@@ -12,6 +12,8 @@ import {CityFormComponent} from '../../../city.module/city.form.component/city.f
 import {CityTableComponent} from '../../../city.module/city.table.component/city.table.component';
 import {StateTableComponent} from '../../../state.module/state.table.component/state.table.component';
 import {StateFormComponent} from '../../../state.module/state.form.component/state.form.component';
+import {BranchTableComponent} from '../../../branch.module/branch.table.component/branch.table.component';
+import {BranchFormComponent} from '../../../branch.module/branch.form.component/branch.form.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
       {path: 'states/add', component: StateFormComponent},
       {path: 'cities', component: CityTableComponent},
       {path: 'cities/add', component: CityFormComponent},
+      {path: 'branches', component: BranchTableComponent},
+      {path: 'branches/add', component: BranchFormComponent},
   ]},
 ];
 

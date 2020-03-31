@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Sucursales</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Codigo</th>
+          <th>Lat</th>
+          <th>Lng</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let branch of branches">
+          <td>{{ branch.id }}</td>
+          <td>{{ branch.name }}</td>
+          <td>{{ branch.code}}</td>
+          <td>{{ branch.lat}}</td>
+          <td>{{ branch.lng}}</td>
+          <td>acciones</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

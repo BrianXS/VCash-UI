@@ -1,9 +1,11 @@
 export class CityRequest {
   public Name: string;
-  public Code: string;
+  public StateId: number;
+  public BranchId: number;
 
-  constructor(Name?: string, Code?: string) {
+  constructor(Name?: string, StateId?: number, BranchId?: number) {
     this.Name = Name;
-    this.Code = Code;
+    this.StateId = StateId;
+    this.BranchId = BranchId;
   }
 }

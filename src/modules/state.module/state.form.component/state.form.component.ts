@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {StatesService} from '../shared/services/statesService';
@@ -26,13 +26,14 @@ export class StateFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.countriesService.getAllCountries().subscribe(response => {
-      this.countries = response;
-    });
-
     this.stateForm = new FormGroup({
       name: new FormControl(null, Validators.required),
-      countryId: new FormControl(1, Validators.required)
+      countryId: new FormControl(null, Validators.required)
+    });
+
+    this.countriesService.getAllCountries().subscribe(response => {
+      this.countries = response;
+      jQuery('select').selectpicker();
     });
   }
 

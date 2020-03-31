@@ -1,0 +1,67 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Sucursal guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Sucursal!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Sucursal</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="branchForm">
+          <div class="form-group">
+            <label for="branchName">Nombre de la Sucursal</label>
+            <input type="text"
+                   class="form-control"
+                   id="branchName"
+                   formControlName="name"
+                   placeholder="Sucursal Cundinamarca..." />
+          </div>
+          <div class="form-group">
+            <label for="branchCode">Codigo de la Sucursal</label>
+            <input type="number"
+                   class="form-control"
+                   id="branchCode"
+                   formControlName="code"
+                   placeholder="1" />
+          </div>
+          <div class="form-group">
+            <label for="lng">Longitud de la Sucursal</label>
+            <input type="number"
+                   class="form-control"
+                   id="lng"
+                   step="0.1"
+                   formControlName="lng"
+                   placeholder="4.713" />
+          </div>
+          <div class="form-group">
+            <label for="lat">Latitud de la Sucursal</label>
+            <input type="number"
+                   class="form-control"
+                   id="lat"
+                   step="0.1"
+                   formControlName="lat"
+                   placeholder="16.01" />
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    [disabled]="!branchForm.valid"
+                    (click)="submitForm()"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/branches" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {CitiesService} from '../shared/services/citiesService';
 import {StatesService} from '../../state.module/shared/services/statesService';
@@ -8,6 +8,8 @@ import {CityResponse} from '../shared/entities/city.response';
 import {CountryResponse} from '../../country.module/shared/entities/country.response';
 import {StateResponse} from '../../state.module/shared/entities/state.response';
 import {CityRequest} from '../shared/entities/city.request';
+import {BranchResponse} from '../../branch.module/shared/entities/branch.response';
+import {BranchesServices} from '../../branch.module/shared/services/branch.service';
 declare var jQuery: any;
 
 @Component({
@@ -22,22 +24,30 @@ export class CityFormComponent implements OnInit {
   countries: CountryResponse[];
   states: StateResponse[];
   cities: CityResponse[];
+  branches: BranchResponse[];
 
   constructor(private tokenVerificator: TokenVerificator,
               private countriesService: CountriesService,
               private statesService: StatesService,
-              private citiesService: CitiesService) {
+              private citiesService: CitiesService,
+              private branchesService: BranchesServices) {
   }
 
   ngOnInit(): void {
     this.cityForm = new FormGroup({
-      name: new FormControl(),
-      stateId: new FormControl(),
-      countryId: new FormControl()
+      name: new FormControl(null, Validators.required),
+      stateId: new FormControl(null, Validators.required),
+      countryId: new FormControl(null, Validators.required),
+      branchId: new FormControl(null, Validators.required)
     });
 
     this.countriesService.getAllCountries().subscribe(response => {
       this.countries = response;
+      jQuery('select').selectpicker();
+    });
+
+    this.branchesService.getAllBranches().subscribe(response => {
+      this.branches = response;
     });
   }
 
@@ -52,7 +62,12 @@ export class CityFormComponent implements OnInit {
   }
 
   submitForm() {
-    const cityData = new CityRequest();
+    const cityData = new CityRequest(this.cityForm.value.name,
+      parseInt(this.cityForm.value.stateId, 10),
+      parseInt(this.cityForm.value.branchId, 10));
+
+    console.log(cityData);
+
     this.citiesService.createCity(cityData).subscribe(response => {
       this.success = true;
       this.error = false;
