@@ -6,8 +6,8 @@ import {DataTablesModule} from 'angular-datatables';
 import {StateFormComponent} from './state.form.component/state.form.component';
 import {StateTableComponent} from './state.table.component/state.table.component';
 import {StatesService} from './shared/services/statesService';
-import {StateEditComponent} from "./state.edit.component/state.edit.component";
-import {NgSelect2Module} from "ng-select2";
+import {StateEditComponent} from './state.edit.component/state.edit.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,10 @@ import {NgSelect2Module} from "ng-select2";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
-    DataTablesModule,
-    NgSelect2Module
+    NgSelectModule,
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   exports: [],
   providers: [StatesService]

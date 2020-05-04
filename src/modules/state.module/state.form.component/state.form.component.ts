@@ -4,9 +4,8 @@ import {TokenVerificator} from '../../app.module/shared/services/token.verificat
 import {StatesService} from '../shared/services/statesService';
 import {StateRequest} from '../shared/entities/state.request';
 import {CountriesService} from '../../country.module/shared/services/countries.service';
-import {SelectType} from "../../app.module/shared/entities/select.type";
-import {Select2OptionData} from "ng-select2";
-import {Observable} from "rxjs";
+import {SelectType} from '../../app.module/shared/entities/select.type';
+import {CountryResponse} from '../../country.module/shared/entities/country.response';
 declare var jQuery: any;
 
 
@@ -17,7 +16,7 @@ declare var jQuery: any;
 })
 export class StateFormComponent implements OnInit {
   stateForm: FormGroup;
-  countries: Observable<Array<Select2OptionData>>;
+  countries: CountryResponse[];
   countryId = '1';
   success: boolean;
   error: boolean;
@@ -34,24 +33,13 @@ export class StateFormComponent implements OnInit {
       countryId: new FormControl(null, Validators.required)
     });
 
-    this.countries = this.countriesService.getAllCountries().pipe();
-
-    /*this.countriesService.getAllCountries().subscribe(response => {
-      response.forEach(item => {
-        this.countries
-          .push(new SelectType(null, null, null, String(item.id), item.name));
-
-        jQuery("#country-selector").select2({
-          data: this.countries
-        });
-      });
-    }); */
-
-    //setInterval(() => {console.log(this.countryId)}, 1000);
+    this.countriesService.getAllCountries().subscribe(response => {
+      this.countries = response;
+    });
   }
 
   submitForm() {
-    const stateData = new StateRequest(this.stateForm.value.name, parseInt(this.stateForm.value.countryId));
+    const stateData = new StateRequest(this.stateForm.value.name, parseInt(this.stateForm.value.countryId, 10));
 
     this.statesService.createState(stateData).subscribe(response => {
       this.success = true;
