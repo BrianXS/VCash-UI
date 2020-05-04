@@ -14,6 +14,7 @@ import {StateTableComponent} from '../../../state.module/state.table.component/s
 import {StateFormComponent} from '../../../state.module/state.form.component/state.form.component';
 import {BranchTableComponent} from '../../../branch.module/branch.table.component/branch.table.component';
 import {BranchFormComponent} from '../../../branch.module/branch.form.component/branch.form.component';
+import {CountryEditComponent} from "../../../country.module/country.edit.component/country.edit.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
       {path: 'denominations/add', component: DenominationFormComponent},
       {path: 'countries', component: CountryTableComponent},
       {path: 'countries/add', component: CountryFormComponent},
+      {path: 'countries/edit/:id', component: CountryEditComponent},
       {path: 'states', component: StateTableComponent},
       {path: 'states/add', component: StateFormComponent},
       {path: 'cities', component: CityTableComponent},

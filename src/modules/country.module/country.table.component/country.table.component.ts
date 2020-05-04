@@ -28,4 +28,12 @@ export class CountryTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  deleteCountry(id: number): void {
+    this.countriesService.deleteCountryById(id).subscribe(result => {
+      this.countriesService.getAllCountries().subscribe(response => {
+        this.countries = response;
+      });
+    });
+  }
 }

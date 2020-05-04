@@ -1,8 +1,8 @@
 export class StateRequest {
   public Name: string;
-  public CountryId: string;
+  public CountryId: number;
 
-  constructor(Name?: string, CountryId?: string) {
+  constructor(Name?: string, CountryId?: number) {
     this.Name = Name;
     this.CountryId = CountryId;
   }

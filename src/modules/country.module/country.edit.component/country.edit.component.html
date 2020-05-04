@@ -2,43 +2,45 @@
 <div class="container">
   <div class="col-5 offset-3">
     <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
-      <strong>Estado o Departamento guardado exitosamente!</strong>
+      <strong>Pais editado exitosamente!</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
-      <strong>Error guardando Estado o Departamento!</strong>
+      <strong>Error editando Pais!</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="card">
       <div class="card-header">
-        <strong>Agregar Estado o Departamento</strong>
+        <strong>Editar Pais</strong>
       </div>
       <div class="card-body">
-        <form [formGroup]="stateForm">
+        <form [formGroup]="countryForm">
           <div class="form-group">
-            <label for="StateName">Nombre del estado o departamento</label>
+            <label for="CountryName">Nombre del pais</label>
             <input type="text"
                    class="form-control"
-                   id="StateName"
+                   id="CountryName"
                    formControlName="name"
-                   placeholder="Cundinamarca" />
+                   placeholder="Colombia" />
           </div>
           <div class="form-group">
-            <ng-select2 id="country-selector"
-                        class="form-control"
-                        [data]="countries"
-                        [width]="'100%'"></ng-select2>
+            <label for="CountryCode">Codigo del pais</label>
+            <input type="text"
+                   class="form-control"
+                   id="CountryCode"
+                   formControlName="code"
+                   placeholder="CO" />
           </div>
           <div class="form-group splitted-buttons">
             <button type="submit"
                     (click)="submitForm()"
-                    [disabled]="!stateForm.valid"
+                    [disabled]="!countryForm.valid"
                     class="btn btn-primary">Guardar</button>
-            <a routerLink="/home/states" class="btn btn-danger">Cancelar</a>
+            <a routerLink="/home/countries" class="btn btn-danger">Cancelar</a>
           </div>
         </form>
       </div>

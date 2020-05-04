@@ -6,11 +6,13 @@ import {CountryFormComponent} from './country.form.component/country.form.compon
 import {CountryTableComponent} from './country.table.component/country.table.component';
 import {DataTablesModule} from 'angular-datatables';
 import {CountriesService} from './shared/services/countries.service';
+import {CountryEditComponent} from "./country.edit.component/country.edit.component";
 
 @NgModule({
   declarations: [
     CountryFormComponent,
-    CountryTableComponent
+    CountryTableComponent,
+    CountryEditComponent
   ],
   imports: [
     BrowserModule,
