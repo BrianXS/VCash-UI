@@ -10,7 +10,6 @@ import {StateResponse} from '../../state.module/shared/entities/state.response';
 import {CityRequest} from '../shared/entities/city.request';
 import {BranchResponse} from '../../branch.module/shared/entities/branch.response';
 import {BranchesServices} from '../../branch.module/shared/services/branch.service';
-declare var jQuery: any;
 
 @Component({
   selector: 'app-city-form',
@@ -22,9 +21,9 @@ export class CityFormComponent implements OnInit {
   success: boolean;
   error: boolean;
   countries: CountryResponse[];
+  branches: BranchResponse[];
   states: StateResponse[];
   cities: CityResponse[];
-  branches: BranchResponse[];
 
   constructor(private tokenVerificator: TokenVerificator,
               private countriesService: CountriesService,
@@ -43,7 +42,6 @@ export class CityFormComponent implements OnInit {
 
     this.countriesService.getAllCountries().subscribe(response => {
       this.countries = response;
-      jQuery('select').selectpicker();
     });
 
     this.branchesService.getAllBranches().subscribe(response => {
@@ -55,9 +53,6 @@ export class CityFormComponent implements OnInit {
     this.statesService.getAllStates().subscribe(response => {
       this.states = response
         .filter(x => x.countryId === parseInt(this.cityForm.value.countryId, 10));
-
-      jQuery('#stateId').selectpicker('destroy');
-      jQuery('#stateId').selectpicker();
     });
   }
 
@@ -65,8 +60,6 @@ export class CityFormComponent implements OnInit {
     const cityData = new CityRequest(this.cityForm.value.name,
       parseInt(this.cityForm.value.stateId, 10),
       parseInt(this.cityForm.value.branchId, 10));
-
-    console.log(cityData);
 
     this.citiesService.createCity(cityData).subscribe(response => {
       this.success = true;

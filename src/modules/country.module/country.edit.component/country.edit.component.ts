@@ -32,9 +32,8 @@ export class CountryEditComponent implements OnInit {
   ngOnInit(): void {
     this.currentRoute.params.subscribe(success => {
       this.currentCountryId = success.id;
-
       this.countriesService.findCountryById(success.id).subscribe(response => {
-        this.countryForm.setValue({name: response.name, code: response.code})
+        this.countryForm.setValue({name: response.name, code: response.code});
       }, error => {
           this.router.navigate(['/home', 'countries']);
       });

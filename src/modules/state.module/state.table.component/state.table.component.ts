@@ -28,4 +28,12 @@ export class StateTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  deleteState(id: number) {
+    this.countriesService.deleteStateById(id).subscribe(success => {
+      this.countriesService.getAllStates().subscribe(response => {
+        this.states = response;
+      });
+    });
+  }
 }

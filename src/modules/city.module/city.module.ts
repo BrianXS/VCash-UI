@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CityFormComponent} from './city.form.component/city.form.component';
 import {CityTableComponent} from './city.table.component/city.table.component';
 import {DataTablesModule} from 'angular-datatables';
 import {CitiesService} from './shared/services/citiesService';
 import {HttpClientModule} from '@angular/common/http';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
+    FormsModule,
     ReactiveFormsModule,
     DataTablesModule
   ],

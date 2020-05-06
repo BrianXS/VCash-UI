@@ -24,7 +24,10 @@
           <td>{{ state.id }}</td>
           <td>{{ state.name }}</td>
           <td>{{ state.country}}</td>
-          <td>acciones</td>
+          <td>
+            <a [routerLink]="'/home/states/edit/' + state.id" class="material-icons">edit</a>
+            <span (click)="deleteState(state.id)" class="material-icons">delete</span>
+          </td>
         </tr>
         </tbody>
       </table>

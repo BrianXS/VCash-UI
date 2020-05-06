@@ -28,14 +28,16 @@
                    placeholder="Cundinamarca" />
           </div>
           <div class="form-group">
-            <label for="StateCountryId">Pais</label>
-            <select class="form-control selectpicker" data-live-search="true"
-                    id="StateCountryId"
-                    formControlName="countryId">
-              <option *ngFor="let country of countries"
-                      [value]="country.id"
-                      [selected]="stateForm.value.countryId === country.id">{{country.name}}</option>
-            </select>
+            <ng-select #select
+                       [items]="countries"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="countryId"
+                       placeholder="Select country"
+                       [virtualScroll]="true"
+                       formControlName="countryId">
+            </ng-select>
           </div>
           <div class="form-group splitted-buttons">
             <button type="submit"

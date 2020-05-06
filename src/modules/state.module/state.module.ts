@@ -7,7 +7,8 @@ import {StateFormComponent} from './state.form.component/state.form.component';
 import {StateTableComponent} from './state.table.component/state.table.component';
 import {StatesService} from './shared/services/statesService';
 import {StateEditComponent} from './state.edit.component/state.edit.component';
-import {NgSelectModule} from '@ng-select/ng-select';
+import {NgSelectModule} from "@ng-select/ng-select";
+
 
 @NgModule({
   declarations: [
