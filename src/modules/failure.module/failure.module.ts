@@ -6,11 +6,13 @@ import {FailuresService} from './shared/services/failures.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {DataTablesModule} from 'angular-datatables';
+import {FailureEditComponent} from "./failure.edit.component/failure.edit.component";
 
 @NgModule({
   declarations: [
     FailureFormComponent,
-    FailureTableComponent
+    FailureTableComponent,
+    FailureEditComponent
   ],
   imports: [
     BrowserModule,

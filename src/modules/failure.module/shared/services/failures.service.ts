@@ -13,12 +13,18 @@ export class FailuresService {
     return this.http.get<FailureResponse[]>('failures/');
   }
 
-  findFailureById() { }
+  findFailureById(id: number) {
+    return this.http.get<FailureResponse>(`failures/${id}`);
+  }
 
-  AddFailure(failureData: FailureRequest): Observable<any> {
+  addFailure(failureData: FailureRequest) {
     return this.http.post('failures/', failureData);
   }
 
-  editFailure() { }
-  deleteFailure() { }
+  editFailure(id: number, failureData: FailureRequest) {
+    return this.http.put<FailureResponse>(`failures/${id}`, failureData);
+  }
+  deleteFailure(id: number) {
+    return this.http.delete(`failures/${id}`);
+  }
 }

@@ -18,12 +18,14 @@ import {CountryEditComponent} from "../../../country.module/country.edit.compone
 import {StateEditComponent} from "../../../state.module/state.edit.component/state.edit.component";
 import {CityEditComponent} from "../../../city.module/city.edit.component/city.edit.component";
 import {BranchEditComponent} from "../../../branch.module/branch.edit.component/branch.edit.component";
+import {FailureEditComponent} from "../../../failure.module/failure.edit.component/failure.edit.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: DashboardComponent, children: [
       {path: 'failures', component: FailureTableComponent},
       {path: 'failures/add', component: FailureFormComponent},
+      {path: 'failures/edit/:id', component: FailureEditComponent},
       {path: 'denominations', component: DenominationTableComponent},
       {path: 'denominations/add', component: DenominationFormComponent},
       {path: 'countries', component: CountryTableComponent},

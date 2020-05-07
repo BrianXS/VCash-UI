@@ -31,7 +31,7 @@ export class FailureFormComponent implements OnInit {
     const failureData: FailureRequest = new FailureRequest(this.failureForm.value.description,
       this.failureForm.value.clientFault);
 
-    this.failuresService.AddFailure(failureData).subscribe(response => {
+    this.failuresService.addFailure(failureData).subscribe(response => {
       this.failureForm.reset();
       this.success = true;
       this.fallido = false;

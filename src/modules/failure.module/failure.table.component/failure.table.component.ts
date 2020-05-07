@@ -30,4 +30,8 @@ export class FailureTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  deleteFailureType(id: number): void {
+    this.failuresService.deleteFailure(id).subscribe();
+  }
 }

@@ -24,7 +24,10 @@
           <td>{{ failure.id }}</td>
           <td>{{ failure.description }}</td>
           <td>{{ failure.clientFault ? 'Si' : 'No' }}</td>
-          <td>acciones</td>
+          <td>
+            <a [routerLink]="'/home/failures/edit/' + failure.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteFailureType(failure.id)" class="material-icons">delete</span>
+          </td>
         </tr>
         </tbody>
       </table>
