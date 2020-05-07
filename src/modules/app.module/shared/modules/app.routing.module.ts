@@ -16,6 +16,8 @@ import {BranchTableComponent} from '../../../branch.module/branch.table.componen
 import {BranchFormComponent} from '../../../branch.module/branch.form.component/branch.form.component';
 import {CountryEditComponent} from "../../../country.module/country.edit.component/country.edit.component";
 import {StateEditComponent} from "../../../state.module/state.edit.component/state.edit.component";
+import {CityEditComponent} from "../../../city.module/city.edit.component/city.edit.component";
+import {BranchEditComponent} from "../../../branch.module/branch.edit.component/branch.edit.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -32,8 +34,10 @@ const routes: Routes = [
       {path: 'states/edit/:id', component: StateEditComponent},
       {path: 'cities', component: CityTableComponent},
       {path: 'cities/add', component: CityFormComponent},
+      {path: 'cities/edit/:id', component: CityEditComponent},
       {path: 'branches', component: BranchTableComponent},
       {path: 'branches/add', component: BranchFormComponent},
+      {path: 'branches/edit/:id', component: BranchEditComponent},
   ]},
 ];
 

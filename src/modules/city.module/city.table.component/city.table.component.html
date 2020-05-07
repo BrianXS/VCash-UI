@@ -28,7 +28,10 @@
           <td>{{ city.state}}</td>
           <td>{{ city.branch}}</td>
           <td>{{ city.country}}</td>
-          <td>acciones</td>
+          <td>
+            <a [routerLink]="'/home/cities/edit/' + city.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteCity(city.id)" class="material-icons">delete</span>
+          </td>
         </tr>
         </tbody>
       </table>

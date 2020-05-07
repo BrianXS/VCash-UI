@@ -1,0 +1,86 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Ciudad editada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error editando Ciudad!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Ciudad</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="cityForm">
+          <div class="form-group">
+            <label for="StateName">Nombre de la Ciudad</label>
+            <input type="text"
+                   class="form-control"
+                   id="StateName"
+                   formControlName="name"
+                   placeholder="Bogota" />
+          </div>
+          <div class="form-group">
+            <label for="StateCountryId">Pais</label>
+            <ng-select #select
+                       id="StateCountryId"
+                       [items]="countries"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="StateCountryId"
+                       placeholder="Select country"
+                       [virtualScroll]="true"
+                       (change)="onCountrySelection()"
+                       formControlName="countryId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="StateStateId">Estado / Departamento</label>
+            <ng-select #select
+                       id="StateStateId"
+                       [items]="states"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="StateStateId"
+                       placeholder="Select a state"
+                       [virtualScroll]="true"
+                       (change)="onCountrySelection()"
+                       formControlName="stateId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="branchId">Sucursal</label>
+            <ng-select #select
+                       id="branchId"
+                       [items]="branches"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="branchId"
+                       placeholder="Select a branch"
+                       [virtualScroll]="true"
+                       (change)="onCountrySelection()"
+                       formControlName="branchId">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!cityForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/cities" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

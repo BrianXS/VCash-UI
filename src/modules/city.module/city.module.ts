@@ -8,11 +8,13 @@ import {DataTablesModule} from 'angular-datatables';
 import {CitiesService} from './shared/services/citiesService';
 import {HttpClientModule} from '@angular/common/http';
 import {NgSelectModule} from "@ng-select/ng-select";
+import {CityEditComponent} from "./city.edit.component/city.edit.component";
 
 @NgModule({
   declarations: [
     CityFormComponent,
-    CityTableComponent
+    CityTableComponent,
+    CityEditComponent
   ],
   imports: [
     BrowserModule,

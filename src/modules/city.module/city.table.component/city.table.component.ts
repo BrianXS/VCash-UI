@@ -14,12 +14,12 @@ export class CityTableComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject<any>();
   cities: CityResponse[];
 
-  constructor(private tokenVerificator: TokenVerificator, private countriesService: CitiesService) {
+  constructor(private tokenVerificator: TokenVerificator, private citiesService: CitiesService) {
     tokenVerificator.verifyTokenValidity();
   }
 
   ngOnInit(): void {
-    this.countriesService.getAllCities().subscribe(response => {
+    this.citiesService.getAllCities().subscribe(response => {
       this.cities = response;
       this.dtTrigger.next();
     });
@@ -27,5 +27,13 @@ export class CityTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  deleteCity(id: number): void {
+    this.citiesService.deleteCityById(id).subscribe(success => {
+      this.citiesService.getAllCities().subscribe(response => {
+        this.cities = response;
+      });
+    });
   }
 }

@@ -28,4 +28,12 @@ export class BranchTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  deleteBranch(id: number): void {
+    this.branchesServices.deleteBranchById(id).subscribe(response => {
+      this.branchesServices.getAllBranches().subscribe(response => {
+        this.branches = response;
+      });
+    });
+  }
 }

@@ -6,6 +6,7 @@ export class CityResponse {
   public branch: string;
   public branchId: number;
   public country: string;
+  public countryId: number;
 
 
   constructor(id?: number,
@@ -14,7 +15,8 @@ export class CityResponse {
               stateId?: number,
               branch?: string,
               branchId?: number,
-              country?: string) {
+              country?: string,
+              countryId?: number) {
     this.id = id;
     this.name = name;
     this.state = state;
@@ -22,5 +24,6 @@ export class CityResponse {
     this.branch = branch;
     this.branchId = branchId;
     this.country = country;
+    this.countryId = countryId;
   }
 }
