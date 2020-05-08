@@ -6,11 +6,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DenominationFormComponent} from './denomination.form.component/denomination.form.component';
+import {DenominationEditComponent} from "./denomination.edit.component/denomination.edit.component";
 
 @NgModule({
   declarations: [
     DenominationTableComponent,
-    DenominationFormComponent
+    DenominationFormComponent,
+    DenominationEditComponent
   ],
   imports: [
     BrowserModule,

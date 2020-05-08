@@ -30,17 +30,20 @@
           <td>{{ denomination.code }}</td>
           <td>{{ denomination.name }}</td>
           <td [ngSwitch]="denomination.currency">
-            <span *ngSwitchCase="denomination.currency === 0">COP</span>
-            <span *ngSwitchCase="denomination.currency === 1">USD</span>
-            <span *ngSwitchCase="denomination.currency === 2">EUR</span>
-            <span *ngSwitchCase="denomination.currency === 3">GPB</span>
-            <span *ngSwitchCase="denomination.currency === 4">PAB</span>
+            <span *ngSwitchCase="0">COP</span>
+            <span *ngSwitchCase="1">USD</span>
+            <span *ngSwitchCase="2">EUR</span>
+            <span *ngSwitchCase="3">GPB</span>
+            <span *ngSwitchCase="4">PAB</span>
           </td>
           <td>{{ denomination.bankNote ? 'Billete' : 'Moneda' }}</td>
           <td>{{ denomination.newSeries ? 'Nuevo' : 'Antiguo' }}</td>
           <td>{{ denomination.unitsPerContainer }}</td>
           <td>{{ denomination.value }}</td>
-          <td>acciones</td>
+          <td>
+            <a [routerLink]="'/home/denominations/edit/' + denomination.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteDenomination(denomination.id)" class="material-icons">delete</span>
+          </td>
         </tr>
         </tbody>
       </table>

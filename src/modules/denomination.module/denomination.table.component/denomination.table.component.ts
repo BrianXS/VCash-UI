@@ -23,12 +23,19 @@ export class DenominationTableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.denominationService.getAllDenominations().subscribe(response => {
       this.denominations = response;
-      console.log(this.denominations);
       this.dtTrigger.next();
     });
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  deleteDenomination(id: number): void {
+    this.denominationService.deleteDenominationById(id).subscribe(response => {
+      this.denominationService.getAllDenominations().subscribe(denomiationsResponse => {
+        this.denominations = denomiationsResponse;
+      });
+    })
   }
 }

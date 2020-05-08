@@ -1,0 +1,13 @@
+.splitted-buttons > button, .splitted-buttons > a {
+  width: 47.5%;
+}
+
+.splitted-buttons > button:first-child{
+  margin-right: 5%;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+span.material-icons { cursor: pointer }

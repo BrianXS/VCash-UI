@@ -19,6 +19,7 @@ import {StateEditComponent} from "../../../state.module/state.edit.component/sta
 import {CityEditComponent} from "../../../city.module/city.edit.component/city.edit.component";
 import {BranchEditComponent} from "../../../branch.module/branch.edit.component/branch.edit.component";
 import {FailureEditComponent} from "../../../failure.module/failure.edit.component/failure.edit.component";
+import {DenominationEditComponent} from "../../../denomination.module/denomination.edit.component/denomination.edit.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: 'failures/edit/:id', component: FailureEditComponent},
       {path: 'denominations', component: DenominationTableComponent},
       {path: 'denominations/add', component: DenominationFormComponent},
+      {path: 'denominations/edit/:id', component: DenominationEditComponent},
       {path: 'countries', component: CountryTableComponent},
       {path: 'countries/add', component: CountryFormComponent},
       {path: 'countries/edit/:id', component: CountryEditComponent},

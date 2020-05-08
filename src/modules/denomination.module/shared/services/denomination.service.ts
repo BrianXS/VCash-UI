@@ -20,7 +20,7 @@ export class DenominationService {
   }
 
   updateDenomination(id: number, denomination: DenominationRequest) {
-    return this.http.post('denominationtypes/', denomination);
+    return this.http.put(`denominationtypes/${id}`, denomination);
   }
 
   deleteDenominationById(id: number) {

@@ -1,0 +1,99 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Denominacion editada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="fallido">
+      <strong>Error editando Denominacion!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar fallido</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="denominationForm">
+          <div class="form-group">
+            <label for="DenominationCode">Codigo de la denominacion</label>
+            <input type="text"
+                   class="form-control"
+                   id="DenominationCode"
+                   formControlName="code"
+                   placeholder="5000-COP-N"/>
+          </div>
+          <div class="form-group">
+            <label for="DenominationName">Nombre de la denominacion</label>
+            <input type="text"
+                   class="form-control"
+                   id="DenominationName"
+                   formControlName="name"
+                   placeholder="CINCO MIL PESOS (Nuevo)..."/>
+          </div>
+          <div class="form-group">
+            <label for="DenominationCurrency">Divisa de la denominacion</label>
+            <select class="form-control"
+                    id="DenominationCurrency"
+                    formControlName="currency">
+              <option value="0">COP</option>
+              <option value="1">USD</option>
+              <option value="2">EUR</option>
+              <option value="3">PAB</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <div>
+              <label>Es billete la denominacion?</label>
+            </div>
+            <div class="form-check form-check-inline" *ngFor="let banknote of [true, false]">
+              <input class="form-check-input" type="radio"
+                     id="si-billete"
+                     [value]="banknote"
+                     formControlName="bankNote">
+              <label class="form-check-label" for="si-billete">{{banknote ? 'Si' : 'No'}}</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <label>Es de nueva serie la denominacion?</label>
+            </div>
+            <div class="form-check form-check-inline" *ngFor="let serieNueva of [true, false]">
+              <input class="form-check-input" type="radio"
+                     id="si-nuevo"
+                     [value]="serieNueva"
+                     formControlName="newSeries">
+              <label class="form-check-label" for="si-billete">{{serieNueva ? 'Si' : 'No'}}</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="DenominationUPC">Unidades por contenedor</label>
+            <input type="number"
+                   class="form-control"
+                   id="DenominationUPC"
+                   formControlName="unitsPerContainer"/>
+          </div>
+          <div class="form-group">
+            <label for="DenominationValue">Valor nominal</label>
+            <input type="number"
+                   class="form-control"
+                   id="DenominationValue"
+                   formControlName="value"/>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!denominationForm.valid"
+                    class="btn btn-primary">Guardar
+            </button>
+            <a routerLink="/home/denominations" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
