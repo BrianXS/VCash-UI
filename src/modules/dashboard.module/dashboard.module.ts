@@ -7,6 +7,7 @@ import {CountryModule} from '../country.module/country.module';
 import {StateModule} from '../state.module/state.module';
 import {CityModule} from '../city.module/city.module';
 import {BranchModule} from '../branch.module/branch.module';
+import {VehicleModule} from "../vehicle.module/vehicle.module";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -17,7 +18,8 @@ import {BranchModule} from '../branch.module/branch.module';
     CountryModule,
     StateModule,
     CityModule,
-    BranchModule
+    BranchModule,
+    VehicleModule
   ],
   exports: [DashboardComponent],
   providers: []
