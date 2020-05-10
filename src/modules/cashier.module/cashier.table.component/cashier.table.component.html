@@ -14,33 +14,27 @@
         <thead>
         <tr>
           <th>Id</th>
-          <th>Modelo</th>
-          <th>Placa</th>
-          <th>Color</th>
-          <th>Sucursal</th>
-          <th>Codigo</th>
-          <th>GPS</th>
-          <th>Unidad</th>
-          <th>Tipo</th>
-          <th>Cantidad Max</th>
+          <th>Nombre</th>
+          <th>Documento</th>
+          <th>Cliente</th>
           <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let branch of vehicles">
-          <td>{{ branch.id }}</td>
-          <td>{{ branch.model }}</td>
-          <td>{{ branch.plate }}</td>
-          <td>{{ branch.color }}</td>
-          <td>{{ branch.branch }}</td>
-          <td>{{ branch.code }}</td>
-          <td>{{ branch.gpsCode }}</td>
-          <td>{{ branch.businessUnit }}</td>
-          <td>{{ branch.vehicleType }}</td>
-          <td>{{ branch.allowedAmmount }}</td>
+        <tr *ngFor="let cashier of cashiers">
+          <td>{{ cashier.id }}</td>
+          <td>{{ cashier.fullName }}</td>
+          <td [ngSwitch]="cashier.documentType">
+            <span *ngSwitchCase="0">
+              CC {{cashier.document}}
+            </span>
+            <span *ngSwitchCase="1">
+              Pasaporte {{cashier.document}}
+            </span>
+          </td>
           <td>
-            <a [routerLink]="'/home/branches/edit/' + branch.id"><span class="material-icons">edit</span></a>
-            <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
+            <a href="'/home/branches/edit/' + cashier.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteCashier(cashier.id)" class="material-icons">delete</span>
           </td>
         </tr>
         </tbody>

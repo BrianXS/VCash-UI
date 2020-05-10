@@ -1,12 +1,12 @@
 import {PersonalDocumentType} from "../enums/personal.document.type";
 
 export class CashierResponse {
-  public Id: number;
-  public FullName: string;
-  public DocumentType: PersonalDocumentType;
-  public Document: string;
-  public CustomerId: number;
-  public Customer: string;
+  public id: number;
+  public fullName: string;
+  public documentType: PersonalDocumentType;
+  public document: string;
+  public customerId: number;
+  public customer: string;
 
   constructor(Id?: number,
               FullName?: string,
@@ -14,12 +14,12 @@ export class CashierResponse {
               Document?: string,
               CustomerId?: number,
               Customer?: string) {
-    this.Id = Id;
-    this.FullName = FullName;
-    this.DocumentType = DocumentType;
-    this.Document = Document;
-    this.CustomerId = CustomerId;
-    this.Customer = Customer;
+    this.id = Id;
+    this.fullName = FullName;
+    this.documentType = DocumentType;
+    this.document = Document;
+    this.customerId = CustomerId;
+    this.customer = Customer;
   }
 }
 

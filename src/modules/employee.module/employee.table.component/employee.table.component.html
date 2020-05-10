@@ -1,0 +1,71 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Trabajadores</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Codigo</th>
+          <th>Cargo</th>
+          <th>Sucursal</th>
+          <th>RH</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.names }}</td>
+          <td>{{ employee.firstLastName }} {{ employee.secondLastName }}</td>
+          <td>{{ employee.code }}</td>
+          <td [ngSwitch]="employee.title">
+            <span *ngSwitchCase="0">Cajero</span>
+            <span *ngSwitchCase="1">Supervisor CEF</span>
+            <span *ngSwitchCase="2">Auxiliar</span>
+            <span *ngSwitchCase="3">Escolta Estatico</span>
+            <span *ngSwitchCase="4">Escolta Motorizado</span>
+            <span *ngSwitchCase="5">Escolta Conductor</span>
+            <span *ngSwitchCase="6">Escolta Conductor</span>
+            <span *ngSwitchCase="7">Operador</span>
+          </td>
+          <td>{{ employee.branch }}</td>
+          <td [ngSwitch]="employee.rhesus">
+            <span *ngSwitchCase="0">A+</span>
+            <span *ngSwitchCase="1">A-</span>
+            <span *ngSwitchCase="2">B+</span>
+            <span *ngSwitchCase="3">B-</span>
+            <span *ngSwitchCase="4">AB+</span>
+            <span *ngSwitchCase="5">AB-</span>
+            <span *ngSwitchCase="6">O+</span>
+            <span *ngSwitchCase="7">O-</span>
+          </td>
+          <td [ngSwitch]="employee.employeeStatus">
+            <span *ngSwitchCase="0">Activo</span>
+            <span *ngSwitchCase="1">Inactivo</span>
+            <span *ngSwitchCase="2">Suspendido</span>
+            <span *ngSwitchCase="3">Vaciciones</span>
+            <span *ngSwitchCase="4">Salida No Remunerado</span>
+            <span *ngSwitchCase="5">Suspendido</span>
+          </td>
+          <td>
+            <a [routerLink]="'/home/branches/edit/' + employee.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteEmployee(employee.id)" class="material-icons">delete</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

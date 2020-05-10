@@ -8,6 +8,8 @@ import {StateModule} from '../state.module/state.module';
 import {CityModule} from '../city.module/city.module';
 import {BranchModule} from '../branch.module/branch.module';
 import {VehicleModule} from "../vehicle.module/vehicle.module";
+import {CashierModule} from "../cashier.module/cashier.module";
+import {EmployeeModule} from "../employee.module/employee.module";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -19,7 +21,9 @@ import {VehicleModule} from "../vehicle.module/vehicle.module";
     StateModule,
     CityModule,
     BranchModule,
-    VehicleModule
+    VehicleModule,
+    CashierModule,
+    EmployeeModule
   ],
   exports: [DashboardComponent],
   providers: []

@@ -21,6 +21,8 @@ import {BranchEditComponent} from "../../../branch.module/branch.edit.component/
 import {FailureEditComponent} from "../../../failure.module/failure.edit.component/failure.edit.component";
 import {DenominationEditComponent} from "../../../denomination.module/denomination.edit.component/denomination.edit.component";
 import {VehicleTableComponent} from "../../../vehicle.module/vehicle.table.component/vehicle.table.component";
+import {CashierTableComponent} from "../../../cashier.module/cashier.table.component/cashier.table.component";
+import {EmployeeTableComponent} from "../../../employee.module/employee.table.component/employee.table.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -43,7 +45,9 @@ const routes: Routes = [
       {path: 'branches', component: BranchTableComponent},
       {path: 'branches/add', component: BranchFormComponent},
       {path: 'branches/edit/:id', component: BranchEditComponent},
-      {path: 'vehicles', component: VehicleTableComponent}
+      {path: 'vehicles', component: VehicleTableComponent},
+      {path: 'employees', component: EmployeeTableComponent},
+      {path: 'cashiers', component: CashierTableComponent}
   ]},
 ];
 
