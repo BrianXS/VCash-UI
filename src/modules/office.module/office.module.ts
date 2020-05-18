@@ -3,12 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
-import {VehicleTableComponent} from './vehicle.table.component/vehicle.table.component';
-import {VehiclesService} from './shared/services/vehicles.service';
+import {OfficeTableComponent} from './office.table.component/office.table.component';
+import {OfficeService} from './shared/services/office.service';
 
 @NgModule({
   declarations: [
-    VehicleTableComponent
+    OfficeTableComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +17,7 @@ import {VehiclesService} from './shared/services/vehicles.service';
     DataTablesModule
   ],
   exports: [],
-  providers: [VehiclesService]
+  providers: [OfficeService]
 })
-export class VehicleModule {
+export class OfficeModule {
 }
