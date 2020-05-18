@@ -31,8 +31,8 @@ export class FundTableComponent implements OnInit, OnDestroy {
 
   deleteBranch(customerId: number, officeId: number): void {
     this.fundService.deleteFundById(customerId, officeId).subscribe(response => {
-      this.fundService.getAllFunds().subscribe(response => {
-        this.funds = response;
+      this.fundService.getAllFunds().subscribe(fundResponse => {
+        this.funds = fundResponse;
       });
     });
   }

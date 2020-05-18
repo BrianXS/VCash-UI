@@ -14,15 +14,16 @@ import {StateTableComponent} from '../../../state.module/state.table.component/s
 import {StateFormComponent} from '../../../state.module/state.form.component/state.form.component';
 import {BranchTableComponent} from '../../../branch.module/branch.table.component/branch.table.component';
 import {BranchFormComponent} from '../../../branch.module/branch.form.component/branch.form.component';
-import {CountryEditComponent} from "../../../country.module/country.edit.component/country.edit.component";
-import {StateEditComponent} from "../../../state.module/state.edit.component/state.edit.component";
-import {CityEditComponent} from "../../../city.module/city.edit.component/city.edit.component";
-import {BranchEditComponent} from "../../../branch.module/branch.edit.component/branch.edit.component";
-import {FailureEditComponent} from "../../../failure.module/failure.edit.component/failure.edit.component";
-import {DenominationEditComponent} from "../../../denomination.module/denomination.edit.component/denomination.edit.component";
-import {VehicleTableComponent} from "../../../vehicle.module/vehicle.table.component/vehicle.table.component";
-import {CashierTableComponent} from "../../../cashier.module/cashier.table.component/cashier.table.component";
-import {EmployeeTableComponent} from "../../../employee.module/employee.table.component/employee.table.component";
+import {CountryEditComponent} from '../../../country.module/country.edit.component/country.edit.component';
+import {StateEditComponent} from '../../../state.module/state.edit.component/state.edit.component';
+import {CityEditComponent} from '../../../city.module/city.edit.component/city.edit.component';
+import {BranchEditComponent} from '../../../branch.module/branch.edit.component/branch.edit.component';
+import {FailureEditComponent} from '../../../failure.module/failure.edit.component/failure.edit.component';
+import {DenominationEditComponent} from '../../../denomination.module/denomination.edit.component/denomination.edit.component';
+import {VehicleTableComponent} from '../../../vehicle.module/vehicle.table.component/vehicle.table.component';
+import {CashierTableComponent} from '../../../cashier.module/cashier.table.component/cashier.table.component';
+import {EmployeeTableComponent} from '../../../employee.module/employee.table.component/employee.table.component';
+import {FundTableComponent} from '../../../fund.module/fund.table.component/fund.table.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -47,7 +48,8 @@ const routes: Routes = [
       {path: 'branches/edit/:id', component: BranchEditComponent},
       {path: 'vehicles', component: VehicleTableComponent},
       {path: 'employees', component: EmployeeTableComponent},
-      {path: 'cashiers', component: CashierTableComponent}
+      {path: 'cashiers', component: CashierTableComponent},
+      {path: 'funds', component: FundTableComponent}
   ]},
 ];
 

@@ -7,9 +7,10 @@ import {CountryModule} from '../country.module/country.module';
 import {StateModule} from '../state.module/state.module';
 import {CityModule} from '../city.module/city.module';
 import {BranchModule} from '../branch.module/branch.module';
-import {VehicleModule} from "../vehicle.module/vehicle.module";
-import {CashierModule} from "../cashier.module/cashier.module";
-import {EmployeeModule} from "../employee.module/employee.module";
+import {VehicleModule} from '../vehicle.module/vehicle.module';
+import {CashierModule} from '../cashier.module/cashier.module';
+import {EmployeeModule} from '../employee.module/employee.module';
+import {FundModule} from '../fund.module/fund.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -23,7 +24,8 @@ import {EmployeeModule} from "../employee.module/employee.module";
     BranchModule,
     VehicleModule,
     CashierModule,
-    EmployeeModule
+    EmployeeModule,
+    FundModule
   ],
   exports: [DashboardComponent],
   providers: []

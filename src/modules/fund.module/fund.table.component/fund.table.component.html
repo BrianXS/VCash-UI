@@ -1,0 +1,34 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Fondos</h3>
+    </div>
+    <div class="col-1 offset-7 text-right">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+        <span class="material-icons">add</span>
+      </a>
+    </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Fondo</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let fund of funds">
+          <td>{{ fund.customer }}</td>
+          <td>{{ fund.office }}</td>
+          <td>
+            <a [routerLink]="'/home/branches/edit/' + fund.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,22 +9,22 @@ export class FundService {
   }
 
   getAllFunds() {
-    return this.http.get<FundResponse[]>('funds');
+    return this.http.get<FundResponse[]>('CustomerFund');
   }
 
   findFundById(customerId: number, officeId: number) {
-    return this.http.get<FundResponse>(`customerfunds/${customerId}/${officeId}`);
+    return this.http.get<FundResponse>(`CustomerFund/${customerId}/${officeId}`);
   }
 
   createFund(fundData: FundRequest) {
-    return this.http.post<FundResponse>(`customerfunds`, fundData);
+    return this.http.post<FundResponse>(`CustomerFund`, fundData);
   }
 
   updateFund(customerId: number, officeId: number, fundData: FundRequest) {
-    return this.http.put<FundResponse>(`customerfunds/${customerId}/${officeId}`, fundData);
+    return this.http.put<FundResponse>(`CustomerFund/${customerId}/${officeId}`, fundData);
   }
 
   deleteFundById(customerId: number, officeId: number) {
-    return this.http.delete(`customerfunds/${customerId}/${officeId}`);
+    return this.http.delete(`CustomerFund/${customerId}/${officeId}`);
   }
 }
