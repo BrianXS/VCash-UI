@@ -3,12 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
-import {VehicleTableComponent} from './vehicle.table.component/vehicle.table.component';
-import {VehiclesService} from './shared/services/vehicles.service';
+import {AtmTableComponent} from './atm.table.component/atm.table.component';
+import {AtmService} from './shared/services/atm.service';
 
 @NgModule({
   declarations: [
-    VehicleTableComponent
+    AtmTableComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +17,7 @@ import {VehiclesService} from './shared/services/vehicles.service';
     DataTablesModule
   ],
   exports: [],
-  providers: [VehiclesService]
+  providers: [AtmService]
 })
-export class VehicleModule {
+export class AtmModule {
 }

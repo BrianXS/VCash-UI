@@ -1,26 +1,26 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
-import {OfficeResponse} from '../shared/entities/vehicle.response';
-import {OfficeService} from '../shared/services/vehicles.service';
+import {OfficeResponse} from '../shared/entities/office.response';
+import {OfficeService} from '../shared/services/office.service';
 
 @Component({
-  selector: 'app-branch-table',
-  templateUrl: './vehicle.table.component.html',
-  styleUrls: ['./vehicle.table.component.css']
+  selector: 'app-office-table',
+  templateUrl: './office.table.component.html',
+  styleUrls: ['./office.table.component.css']
 })
 export class OfficeTableComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = { searching: false, paging: false};
   dtTrigger: Subject<any> = new Subject<any>();
-  vehicles: OfficeResponse[];
+  offices: OfficeResponse[];
 
-  constructor(private tokenVerificator: TokenVerificator, private vehiclesService: OfficeService) {
+  constructor(private tokenVerificator: TokenVerificator, private officeService: OfficeService) {
     tokenVerificator.verifyTokenValidity();
   }
 
   ngOnInit(): void {
-    this.vehiclesService.getAllVehicles().subscribe(response => {
-      this.vehicles = response;
+    this.officeService.getAllOffices().subscribe(response => {
+      this.offices = response;
       this.dtTrigger.next();
     });
   }
@@ -30,9 +30,9 @@ export class OfficeTableComponent implements OnInit, OnDestroy {
   }
 
   deleteBranch(id: number): void {
-    this.vehiclesService.deleteVehicleById(id).subscribe(response => {
-      this.vehiclesService.getAllVehicles().subscribe(response => {
-        this.vehicles = response;
+    this.officeService.deleteOfficeById(id).subscribe(response => {
+      this.officeService.getAllOffices().subscribe(response => {
+        this.offices = response;
       });
     });
   }

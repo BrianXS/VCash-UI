@@ -14,30 +14,30 @@
         <thead>
         <tr>
           <th>Id</th>
-          <th>Modelo</th>
-          <th>Placa</th>
-          <th>Color</th>
-          <th>Sucursal</th>
-          <th>Codigo</th>
-          <th>GPS</th>
-          <th>Unidad</th>
-          <th>Tipo</th>
-          <th>Cantidad Max</th>
+          <th>Nombre</th>
+          <th>Cliente</th>
+          <th>Telefono</th>
+          <th>Correo</th>
+          <th>Cobertura</th>
+          <th>Kits</th>
+          <th>Llaves</th>
+          <th>Cheques</th>
+          <th>Documentos</th>
           <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let branch of vehicles">
+        <tr *ngFor="let branch of offices">
           <td>{{ branch.id }}</td>
-          <td>{{ branch.model }}</td>
-          <td>{{ branch.plate }}</td>
-          <td>{{ branch.color }}</td>
-          <td>{{ branch.branch }}</td>
-          <td>{{ branch.code }}</td>
-          <td>{{ branch.gpsCode }}</td>
-          <td>{{ branch.businessUnit }}</td>
-          <td>{{ branch.vehicleType }}</td>
-          <td>{{ branch.allowedAmmount }}</td>
+          <td>{{ branch.name }}</td>
+          <td>{{ branch.customer }}</td>
+          <td>{{ branch.phone }}</td>
+          <td>{{ branch.managerEmail }}</td>
+          <td>{{ branch.coverage }}</td>
+          <td>{{ branch.hasKits }}</td>
+          <td>{{ branch.hasKeys }}</td>
+          <td>{{ branch.hasCheques }}</td>
+          <td>{{ branch.hasDocuments }}</td>
           <td>
             <a [routerLink]="'/home/branches/edit/' + branch.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>

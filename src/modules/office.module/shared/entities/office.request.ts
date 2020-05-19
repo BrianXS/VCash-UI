@@ -33,4 +33,59 @@ export class OfficeRequest {
   public CityId: number;
   public Prefix: string;
   public BusinessTypeId?: number;
+
+  constructor(Id?: number,
+              CustomerId?: number,
+              Customer?: string,
+              VatcoCode?: string,
+              ClientCode?: string,
+              Name?: string,
+              Address?: string,
+              Phone?: string,
+              Coverage?: Coverage,
+              OfficeType?: OfficeType,
+              Lat?: number,
+              Lng?: number,
+              From?: Date,
+              Until?: Date,
+              HasKits?: boolean,
+              HasKeys?: boolean,
+              HasEnvelopes?: boolean,
+              HasCheques?: boolean,
+              HasDocuments?: boolean,
+              IsFund?: boolean,
+              Manager?: string,
+              ManagerDetails?: string,
+              ManagerEmail?: string,
+              CityId?: number,
+              City?: string,
+              Prefix?: string,
+              BusinessTypeId?: number,
+              BusinessType?: string,
+              Active?: boolean) {
+    this.CustomerId = CustomerId;
+    this.VatcoCode = VatcoCode;
+    this.ClientCode = ClientCode;
+    this.Name = Name;
+    this.Address = Address;
+    this.Phone = Phone;
+    this.Coverage = Coverage;
+    this.OfficeType = OfficeType;
+    this.Lat = Lat;
+    this.Lng = Lng;
+    this.From = From;
+    this.Until = Until;
+    this.HasKits = HasKits;
+    this.HasKeys = HasKeys;
+    this.HasEnvelopes = HasEnvelopes;
+    this.HasCheques = HasCheques;
+    this.HasDocuments = HasDocuments;
+    this.IsFund = IsFund;
+    this.Manager = Manager;
+    this.ManagerDetails = ManagerDetails;
+    this.ManagerEmail = ManagerEmail;
+    this.CityId = CityId;
+    this.Prefix = Prefix;
+    this.BusinessTypeId = BusinessTypeId;
+  }
 }

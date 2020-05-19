@@ -11,6 +11,7 @@ import {VehicleModule} from '../vehicle.module/vehicle.module';
 import {CashierModule} from '../cashier.module/cashier.module';
 import {EmployeeModule} from '../employee.module/employee.module';
 import {FundModule} from '../fund.module/fund.module';
+import {OfficeModule} from "../office.module/office.module";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -25,7 +26,8 @@ import {FundModule} from '../fund.module/fund.module';
     VehicleModule,
     CashierModule,
     EmployeeModule,
-    FundModule
+    FundModule,
+    OfficeModule
   ],
   exports: [DashboardComponent],
   providers: []

@@ -1,8 +1,7 @@
 import {BusinessUnit} from "../enums/business.unit";
 import {VehicleType} from "../enums/vehicle.type";
 
-export class VehicleResponse {
-  public id: number;
+export class AtmRequest {
   public model: string;
   public plate: string;
   public color: string;
@@ -19,8 +18,7 @@ export class VehicleResponse {
   public allowedAmmount: number;
 
 
-  constructor(id: number,
-              model: string,
+  constructor(model: string,
               plate: string,
               color: string,
               branchId: number,
@@ -30,7 +28,6 @@ export class VehicleResponse {
               businessUnit: BusinessUnit,
               vehicleType: VehicleType,
               allowedAmmount: number) {
-    this.id = id;
     this.model = model;
     this.plate = plate;
     this.color = color;
