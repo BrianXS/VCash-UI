@@ -47,7 +47,7 @@ const routes: Routes = [
       {path: 'branches', component: BranchTableComponent},
       {path: 'branches/add', component: BranchFormComponent},
       {path: 'branches/edit/:id', component: BranchEditComponent},
-      {path: 'vehicles', component: VehicleTableComponent},
+      {path: 'customers', component: VehicleTableComponent},
       {path: 'employees', component: EmployeeTableComponent},
       {path: 'cashiers', component: CashierTableComponent},
       {path: 'funds', component: FundTableComponent},

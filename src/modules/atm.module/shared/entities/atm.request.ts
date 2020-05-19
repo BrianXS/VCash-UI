@@ -1,42 +1,32 @@
-import {BusinessUnit} from "../enums/business.unit";
-import {VehicleType} from "../enums/vehicle.type";
+import {Brand} from '../enums/brand';
+import {Mode} from '../enums/mode';
 
 export class AtmRequest {
-  public model: string;
-  public plate: string;
-  public color: string;
-
-  public branchId: number;
-  public branch: string;
-
-  public code: string;
-  public gpsCode: string;
-
-  public businessUnit: BusinessUnit;
-  public vehicleType: VehicleType;
-
-  public allowedAmmount: number;
+  public LocalizationCode: boolean;
+  public Emergency: boolean;
+  public MaxValue: number;
+  public Brand: Brand;
+  public Mode: Mode;
+  public From: Date;
+  public OfficeId: number;
+  public AtmBatteryId?: number;
 
 
-  constructor(model: string,
-              plate: string,
-              color: string,
-              branchId: number,
-              branch: string,
-              code: string,
-              gpsCode: string,
-              businessUnit: BusinessUnit,
-              vehicleType: VehicleType,
-              allowedAmmount: number) {
-    this.model = model;
-    this.plate = plate;
-    this.color = color;
-    this.branchId = branchId;
-    this.branch = branch;
-    this.code = code;
-    this.gpsCode = gpsCode;
-    this.businessUnit = businessUnit;
-    this.vehicleType = vehicleType;
-    this.allowedAmmount = allowedAmmount;
+  constructor(LocalizationCode: boolean,
+              Emergency: boolean,
+              MaxValue: number,
+              brand: Brand,
+              mode: Mode,
+              From: Date,
+              OfficeId: number,
+              AtmBatteryId: number) {
+    this.LocalizationCode = LocalizationCode;
+    this.Emergency = Emergency;
+    this.MaxValue = MaxValue;
+    this.Brand = brand;
+    this.Mode = mode;
+    this.From = From;
+    this.OfficeId = OfficeId;
+    this.AtmBatteryId = AtmBatteryId;
   }
 }

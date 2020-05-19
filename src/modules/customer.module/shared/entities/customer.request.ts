@@ -1,7 +1,7 @@
 import {BusinessUnit} from "../enums/business.unit";
 import {VehicleType} from "../enums/vehicle.type";
 
-export class VehicleRequest {
+export class CustomerRequest {
   public model: string;
   public plate: string;
   public color: string;

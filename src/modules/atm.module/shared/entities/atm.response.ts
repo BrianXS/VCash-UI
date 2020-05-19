@@ -43,4 +43,3 @@ export class AtmResponse {
     this.atmBattery = atmBattery;
   }
 }
-
