@@ -9,22 +9,22 @@ export class AtmService {
   }
 
   getAllATMs() {
-    return this.http.get<AtmResponse[]>('atms');
+    return this.http.get<AtmResponse[]>('atm');
   }
 
   findATMById(id: number) {
-    return this.http.get<AtmResponse>(`atms/${id}`);
+    return this.http.get<AtmResponse>(`atm/${id}`);
   }
 
   createATM(atmData: AtmRequest) {
-    return this.http.post<AtmResponse>(`atms`, atmData);
+    return this.http.post<AtmResponse>(`atm`, atmData);
   }
 
   updateATM(id: number, atmData: AtmRequest) {
-    return this.http.put<AtmResponse>(`atms/${id}`, atmData);
+    return this.http.put<AtmResponse>(`atm/${id}`, atmData);
   }
 
   deleteATMById(id: number) {
-    return this.http.delete(`atms/${id}`);
+    return this.http.delete(`atm/${id}`);
   }
 }

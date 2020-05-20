@@ -25,6 +25,7 @@ import {CashierTableComponent} from '../../../cashier.module/cashier.table.compo
 import {EmployeeTableComponent} from '../../../employee.module/employee.table.component/employee.table.component';
 import {FundTableComponent} from '../../../fund.module/fund.table.component/fund.table.component';
 import {OfficeTableComponent} from "../../../office.module/office.table.component/office.table.component";
+import {AtmTableComponent} from "../../../atm.module/atm.table.component/atm.table.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -51,7 +52,8 @@ const routes: Routes = [
       {path: 'employees', component: EmployeeTableComponent},
       {path: 'cashiers', component: CashierTableComponent},
       {path: 'funds', component: FundTableComponent},
-      {path: 'offices', component: OfficeTableComponent}
+      {path: 'offices', component: OfficeTableComponent},
+      {path: 'atms', component: AtmTableComponent}
   ]},
 ];
 

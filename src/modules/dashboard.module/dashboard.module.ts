@@ -12,6 +12,7 @@ import {CashierModule} from '../cashier.module/cashier.module';
 import {EmployeeModule} from '../employee.module/employee.module';
 import {FundModule} from '../fund.module/fund.module';
 import {OfficeModule} from "../office.module/office.module";
+import {AtmModule} from "../atm.module/atm.module";
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -27,7 +28,8 @@ import {OfficeModule} from "../office.module/office.module";
     CashierModule,
     EmployeeModule,
     FundModule,
-    OfficeModule
+    OfficeModule,
+    AtmModule
   ],
   exports: [DashboardComponent],
   providers: []

@@ -2,7 +2,7 @@ import {Brand} from '../enums/brand';
 import {Mode} from '../enums/mode';
 
 export class AtmResponse {
-  public Id: number;
+  public id: number;
 
   public localizationCode: boolean;
   public emergency: boolean;
@@ -19,7 +19,7 @@ export class AtmResponse {
   public atmBattery: string;
 
 
-  constructor(Id?: number,
+  constructor(id?: number,
               localizationCode?: boolean,
               emergency?: boolean,
               maxValue?: number,
@@ -30,7 +30,7 @@ export class AtmResponse {
               office?: string,
               atmBatteryId?: number,
               atmBattery?: string) {
-    this.Id = Id;
+    this.id = id;
     this.localizationCode = localizationCode;
     this.emergency = emergency;
     this.maxValue = maxValue;
