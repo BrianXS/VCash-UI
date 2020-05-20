@@ -10,6 +10,7 @@ export class AtmRequest {
   public From: Date;
   public OfficeId: number;
   public AtmBatteryId?: number;
+  public DrawerRangeId?: number;
 
 
   constructor(LocalizationCode: boolean,
@@ -19,7 +20,8 @@ export class AtmRequest {
               mode: Mode,
               From: Date,
               OfficeId: number,
-              AtmBatteryId: number) {
+              AtmBatteryId: number,
+              DrawerRangeId: number) {
     this.LocalizationCode = LocalizationCode;
     this.Emergency = Emergency;
     this.MaxValue = MaxValue;
@@ -28,5 +30,6 @@ export class AtmRequest {
     this.From = From;
     this.OfficeId = OfficeId;
     this.AtmBatteryId = AtmBatteryId;
+    this.DrawerRangeId = DrawerRangeId;
   }
 }

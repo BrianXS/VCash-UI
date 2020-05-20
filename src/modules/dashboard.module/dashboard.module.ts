@@ -11,8 +11,10 @@ import {VehicleModule} from '../vehicle.module/vehicle.module';
 import {CashierModule} from '../cashier.module/cashier.module';
 import {EmployeeModule} from '../employee.module/employee.module';
 import {FundModule} from '../fund.module/fund.module';
-import {OfficeModule} from "../office.module/office.module";
-import {AtmModule} from "../atm.module/atm.module";
+import {OfficeModule} from '../office.module/office.module';
+import {AtmModule} from '../atm.module/atm.module';
+import {BatteryModule} from '../battery.module/battery.module';
+import {CustomerModule} from '../customer.module/customer.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -29,7 +31,9 @@ import {AtmModule} from "../atm.module/atm.module";
     EmployeeModule,
     FundModule,
     OfficeModule,
-    AtmModule
+    AtmModule,
+    BatteryModule,
+    CustomerModule
   ],
   exports: [DashboardComponent],
   providers: []

@@ -26,6 +26,9 @@ import {EmployeeTableComponent} from '../../../employee.module/employee.table.co
 import {FundTableComponent} from '../../../fund.module/fund.table.component/fund.table.component';
 import {OfficeTableComponent} from "../../../office.module/office.table.component/office.table.component";
 import {AtmTableComponent} from "../../../atm.module/atm.table.component/atm.table.component";
+import {BatteryModule} from '../../../battery.module/battery.module';
+import {BatteryTableComponent} from '../../../battery.module/battery.table.component/battery.table.component';
+import {CustomerTableComponent} from '../../../customer.module/customer.table.component/customer.table.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -48,12 +51,14 @@ const routes: Routes = [
       {path: 'branches', component: BranchTableComponent},
       {path: 'branches/add', component: BranchFormComponent},
       {path: 'branches/edit/:id', component: BranchEditComponent},
-      {path: 'customers', component: VehicleTableComponent},
+      {path: 'vehicles', component: VehicleTableComponent},
       {path: 'employees', component: EmployeeTableComponent},
       {path: 'cashiers', component: CashierTableComponent},
       {path: 'funds', component: FundTableComponent},
       {path: 'offices', component: OfficeTableComponent},
-      {path: 'atms', component: AtmTableComponent}
+      {path: 'atms', component: AtmTableComponent},
+      {path: 'atm-batteries', component: BatteryTableComponent},
+      {path: 'customers', component: CustomerTableComponent}
   ]},
 ];
 

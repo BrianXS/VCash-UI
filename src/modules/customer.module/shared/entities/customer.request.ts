@@ -1,42 +1,42 @@
-import {BusinessUnit} from "../enums/business.unit";
-import {VehicleType} from "../enums/vehicle.type";
+import {CorporateDocumentType} from '../enums/corporateDocumentType';
 
 export class CustomerRequest {
-  public model: string;
-  public plate: string;
-  public color: string;
+  public Name: string;
+  public CorporateName: string;
+  public Address: string;
+  public Website: string;
+  public Phone: string;
+  public DocumentType: CorporateDocumentType;
+  public Document: string;
+  public HeadquartersId: number;
+  public InvoicingCityId: number;
 
-  public branchId: number;
-  public branch: string;
+  public FirstKeyPerson: string;
+  public FirstKeyPersonTitle: string;
+  public SecondKeyPerson: string;
+  public SecondKeyPersonTitle: string;
 
-  public code: string;
-  public gpsCode: string;
-
-  public businessUnit: BusinessUnit;
-  public vehicleType: VehicleType;
-
-  public allowedAmmount: number;
-
-
-  constructor(model: string,
-              plate: string,
-              color: string,
-              branchId: number,
-              branch: string,
-              code: string,
-              gpsCode: string,
-              businessUnit: BusinessUnit,
-              vehicleType: VehicleType,
-              allowedAmmount: number) {
-    this.model = model;
-    this.plate = plate;
-    this.color = color;
-    this.branchId = branchId;
-    this.branch = branch;
-    this.code = code;
-    this.gpsCode = gpsCode;
-    this.businessUnit = businessUnit;
-    this.vehicleType = vehicleType;
-    this.allowedAmmount = allowedAmmount;
-  }
+  public SubClient: boolean;
+  public ParentClient: number;
 }
+
+/*
+
+        public Name: string;
+        public CorporateName: string;
+        public Address: string;
+        public Website: string;
+        public Phone: string;
+        public DocumentType: CorporateDocumentType;
+        public Document: string;
+        public HeadquartersId: number;
+        public InvoicingCityId: number;
+
+        public FirstKeyPerson: string;
+        public FirstKeyPersonTitle: string;
+        public SecondKeyPerson: string;
+        public SecondKeyPersonTitle: string;
+
+        public SubClient: boolean;
+        public ParentClient: number;
+ */

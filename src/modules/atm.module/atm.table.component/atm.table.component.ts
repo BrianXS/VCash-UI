@@ -5,7 +5,7 @@ import {AtmResponse} from '../shared/entities/atm.response';
 import {AtmService} from '../shared/services/atm.service';
 
 @Component({
-  selector: 'app-branch-table',
+  selector: 'app-atm-table',
   templateUrl: './atm.table.component.html',
   styleUrls: ['./atm.table.component.css']
 })

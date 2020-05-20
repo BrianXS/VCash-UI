@@ -18,6 +18,9 @@ export class AtmResponse {
   public atmBatteryId?: number;
   public atmBattery: string;
 
+  public drawerRangeId?: number;
+  public drawerRange: string;
+
 
   constructor(id?: number,
               localizationCode?: boolean,
@@ -29,7 +32,9 @@ export class AtmResponse {
               officeId?: number,
               office?: string,
               atmBatteryId?: number,
-              atmBattery?: string) {
+              atmBattery?: string,
+              drawerRangeId?: number,
+              drawerRange?: string) {
     this.id = id;
     this.localizationCode = localizationCode;
     this.emergency = emergency;
@@ -41,5 +46,7 @@ export class AtmResponse {
     this.office = office;
     this.atmBatteryId = atmBatteryId;
     this.atmBattery = atmBattery;
+    this.drawerRangeId = drawerRangeId;
+    this.drawerRange = drawerRange;
   }
 }

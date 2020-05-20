@@ -24,7 +24,7 @@
         <tr *ngFor="let items of atms">
           <td>{{ items.id }}</td>
           <td>{{ items.atmBattery }}</td>
-          <td>R1</td>
+          <td>{{ items.drawerRange }}</td>
           <td>
             <a [routerLink]="'/home/branches/edit/' + items.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteBranch(items.id)" class="material-icons">delete</span>
