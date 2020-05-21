@@ -29,28 +29,35 @@ import {AtmTableComponent} from "../../../atm.module/atm.table.component/atm.tab
 import {BatteryModule} from '../../../battery.module/battery.module';
 import {BatteryTableComponent} from '../../../battery.module/battery.table.component/battery.table.component';
 import {CustomerTableComponent} from '../../../customer.module/customer.table.component/customer.table.component';
+import {DrawerTableComponent} from '../../../drawer.module/drawer.table.component/drawer.table.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: DashboardComponent, children: [
-      {path: 'failures', component: FailureTableComponent},
-      {path: 'failures/add', component: FailureFormComponent},
-      {path: 'failures/edit/:id', component: FailureEditComponent},
-      {path: 'denominations', component: DenominationTableComponent},
-      {path: 'denominations/add', component: DenominationFormComponent},
-      {path: 'denominations/edit/:id', component: DenominationEditComponent},
-      {path: 'countries', component: CountryTableComponent},
-      {path: 'countries/add', component: CountryFormComponent},
-      {path: 'countries/edit/:id', component: CountryEditComponent},
-      {path: 'states', component: StateTableComponent},
-      {path: 'states/add', component: StateFormComponent},
-      {path: 'states/edit/:id', component: StateEditComponent},
-      {path: 'cities', component: CityTableComponent},
-      {path: 'cities/add', component: CityFormComponent},
-      {path: 'cities/edit/:id', component: CityEditComponent},
-      {path: 'branches', component: BranchTableComponent},
-      {path: 'branches/add', component: BranchFormComponent},
-      {path: 'branches/edit/:id', component: BranchEditComponent},
+      {path: 'failures', component: FailureTableComponent, children: [
+          {path: 'add', component: FailureFormComponent},
+          {path: 'edit/:id', component: FailureEditComponent}
+      ]},
+      {path: 'denominations', component: DenominationTableComponent, children: [
+          {path: 'add', component: DenominationFormComponent},
+          {path: 'edit/:id', component: DenominationEditComponent}
+      ]},
+      {path: 'countries', component: CountryTableComponent, children: [
+          {path: 'add', component: CountryFormComponent},
+          {path: 'edit/:id', component: CountryEditComponent}
+      ]},
+      {path: 'states', component: StateTableComponent, children: [
+          {path: 'add', component: StateFormComponent},
+          {path: 'edit/:id', component: StateEditComponent}
+      ]},
+      {path: 'cities', component: CityTableComponent, children: [
+          {path: 'add', component: CityFormComponent},
+          {path: 'edit/:id', component: CityEditComponent}
+      ]},
+      {path: 'branches', component: BranchTableComponent, children: [
+          {path: 'add', component: BranchFormComponent},
+          {path: 'edit/:id', component: BranchEditComponent},
+      ]},
       {path: 'vehicles', component: VehicleTableComponent},
       {path: 'employees', component: EmployeeTableComponent},
       {path: 'cashiers', component: CashierTableComponent},
@@ -58,7 +65,8 @@ const routes: Routes = [
       {path: 'offices', component: OfficeTableComponent},
       {path: 'atms', component: AtmTableComponent},
       {path: 'atm-batteries', component: BatteryTableComponent},
-      {path: 'customers', component: CustomerTableComponent}
+      {path: 'customers', component: CustomerTableComponent},
+      {path: 'drawers', component: DrawerTableComponent}
   ]},
 ];
 
