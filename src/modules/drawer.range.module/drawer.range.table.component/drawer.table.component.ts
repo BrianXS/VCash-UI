@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
-import {DrawerResponse} from '../shared/entities/drawer.response';
-import {DrawerService} from '../shared/services/drawer.service';
+import {DrawerRangeResponse} from '../shared/entities/drawer.range.response';
+import {DrawerRangeService} from '../shared/services/drawer.range.service';
 
 @Component({
   selector: 'app-drawer-table',
@@ -12,9 +12,9 @@ import {DrawerService} from '../shared/services/drawer.service';
 export class DrawerTableComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = { searching: false, paging: false};
   dtTrigger: Subject<any> = new Subject<any>();
-  drawers: DrawerResponse[];
+  drawers: DrawerRangeResponse[];
 
-  constructor(private tokenVerificator: TokenVerificator, private drawersService: DrawerService) {
+  constructor(private tokenVerificator: TokenVerificator, private drawersService: DrawerRangeService) {
     tokenVerificator.verifyTokenValidity();
   }
 

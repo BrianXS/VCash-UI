@@ -9,22 +9,22 @@ export class DrawerService {
   }
 
   getAllDrawers() {
-    return this.http.get<DrawerResponse[]>('drawer');
+    return this.http.get<DrawerResponse[]>('drawers');
   }
 
   findDrawerById(id: number) {
-    return this.http.get<DrawerResponse>(`drawer/${id}`);
+    return this.http.get<DrawerResponse>(`drawers/${id}`);
   }
 
   createDrawer(drawerData: DrawerRequest) {
-    return this.http.post<DrawerResponse>(`drawer`, drawerData);
+    return this.http.post<DrawerResponse>(`drawers`, drawerData);
   }
 
   updateDrawer(id: number, drawerData: DrawerRequest) {
-    return this.http.put<DrawerResponse>(`drawer/${id}`, drawerData);
+    return this.http.put<DrawerResponse>(`drawers/${id}`, drawerData);
   }
 
   deleteDrawerById(id: number) {
-    return this.http.delete(`drawer/${id}`);
+    return this.http.delete(`drawers/${id}`);
   }
 }

@@ -15,6 +15,7 @@ import {OfficeModule} from '../office.module/office.module';
 import {AtmModule} from '../atm.module/atm.module';
 import {BatteryModule} from '../battery.module/battery.module';
 import {CustomerModule} from '../customer.module/customer.module';
+import {DrawerModule} from '../drawer.module/drawer.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -33,7 +34,8 @@ import {CustomerModule} from '../customer.module/customer.module';
     OfficeModule,
     AtmModule,
     BatteryModule,
-    CustomerModule
+    CustomerModule,
+    DrawerModule
   ],
   exports: [DashboardComponent],
   providers: []
