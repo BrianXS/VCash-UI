@@ -16,6 +16,7 @@ import {AtmModule} from '../atm.module/atm.module';
 import {BatteryModule} from '../battery.module/battery.module';
 import {CustomerModule} from '../customer.module/customer.module';
 import {DrawerModule} from '../drawer.module/drawer.module';
+import {DrawerRangeModule} from '../drawer.range.module/drawer.range.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -35,7 +36,8 @@ import {DrawerModule} from '../drawer.module/drawer.module';
     AtmModule,
     BatteryModule,
     CustomerModule,
-    DrawerModule
+    DrawerModule,
+    DrawerRangeModule
   ],
   exports: [DashboardComponent],
   providers: []

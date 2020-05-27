@@ -9,6 +9,7 @@ import {AppRoutingModule} from './shared/modules/app.routing.module';
 import {DashboardModule} from '../dashboard.module/dashboard.module';
 import {TokenVerificator} from './shared/services/token.verificator';
 import {FailureModule} from '../failure.module/failure.module';
+import {EnumToArray} from './shared/services/enum.to.array';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FailureModule} from '../failure.module/failure.module';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    TokenVerificator
+    TokenVerificator,
+    EnumToArray
   ],
   bootstrap: [RootComponent]
 })

@@ -1,5 +1,5 @@
-import {BusinessUnit} from "../enums/business.unit";
-import {VehicleType} from "../enums/vehicle.type";
+import {BusinessUnit} from '../enums/business.unit';
+import {VehicleType} from '../enums/vehicle.type';
 
 export class VehicleResponse {
   public id: number;
@@ -17,7 +17,6 @@ export class VehicleResponse {
   public vehicleType: VehicleType;
 
   public allowedAmmount: number;
-
 
   constructor(id: number,
               model: string,

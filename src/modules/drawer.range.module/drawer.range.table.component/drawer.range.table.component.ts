@@ -5,11 +5,11 @@ import {DrawerRangeResponse} from '../shared/entities/drawer.range.response';
 import {DrawerRangeService} from '../shared/services/drawer.range.service';
 
 @Component({
-  selector: 'app-drawer-table',
-  templateUrl: './drawer.table.component.html',
-  styleUrls: ['./drawer.table.component.css']
+  selector: 'app-drawer-range-table',
+  templateUrl: './drawer.range.table.component.html',
+  styleUrls: ['./drawer.range.table.component.css']
 })
-export class DrawerTableComponent implements OnInit, OnDestroy {
+export class DrawerRangeTableComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = { searching: false, paging: false};
   dtTrigger: Subject<any> = new Subject<any>();
   drawers: DrawerRangeResponse[];

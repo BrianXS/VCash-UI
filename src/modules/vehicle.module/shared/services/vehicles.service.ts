@@ -9,7 +9,7 @@ export class VehiclesService {
   }
 
   getAllVehicles() {
-    return this.http.get<VehicleResponse[]>('customers');
+    return this.http.get<VehicleResponse[]>('vehicles');
   }
 
   findVehicleById(id: number) {

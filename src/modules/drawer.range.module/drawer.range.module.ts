@@ -3,12 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
-import {DrawerTableComponent} from './drawer.table.component/drawer.table.component';
-import {DrawerRangeService} from './shared/services/drawer.service';
+import {DrawerRangeTableComponent} from './drawer.range.table.component/drawer.range.table.component';
+import {DrawerRangeService} from './shared/services/drawer.range.service';
 
 @NgModule({
   declarations: [
-    DrawerTableComponent
+    DrawerRangeTableComponent
   ],
   imports: [
     BrowserModule,

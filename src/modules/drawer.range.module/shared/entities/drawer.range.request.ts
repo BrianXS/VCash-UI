@@ -1,6 +1,4 @@
-import {DrawerType} from '../enums/drawer.type';
-import {DrawerFunction} from '../enums/drawer.function';
-
+import {Currency} from '../enums/currency';
 
 export class DrawerRangeRequest {
   public Code: string;
@@ -12,9 +10,5 @@ export class DrawerRangeRequest {
     this.Currency = currency;
     this.CustomerId = CustomerId;
   }
-}
-
-export enum Currency {
-
 }
 

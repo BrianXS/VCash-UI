@@ -5,7 +5,7 @@ import {VehicleResponse} from '../shared/entities/vehicle.response';
 import {VehiclesService} from '../shared/services/vehicles.service';
 
 @Component({
-  selector: 'app-branch-table',
+  selector: 'app-vehicle-table',
   templateUrl: './vehicle.table.component.html',
   styleUrls: ['./vehicle.table.component.css']
 })
@@ -31,8 +31,8 @@ export class VehicleTableComponent implements OnInit, OnDestroy {
 
   deleteBranch(id: number): void {
     this.vehiclesService.deleteVehicleById(id).subscribe(response => {
-      this.vehiclesService.getAllVehicles().subscribe(response => {
-        this.vehicles = response;
+      this.vehiclesService.getAllVehicles().subscribe(vehicleResponse => {
+        this.vehicles = vehicleResponse;
       });
     });
   }

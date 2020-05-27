@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <h3>Gavetas</h3>
+      <h3>Rango de Gavetas</h3>
     </div>
     <div class="col-1 offset-7 text-right">
       <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
@@ -14,24 +14,18 @@
         <thead>
         <tr>
           <th>Id</th>
-          <th>Tipo</th>
-          <th>Funcion</th>
-          <th>Rango</th>
-          <th>Denominacion</th>
-          <th>Cantidad Standard</th>
-          <th>Valor Maximo</th>
+          <th>Codigo</th>
+          <th>Divisa</th>
+          <th>Cliente</th>
           <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let items of drawers">
           <td>{{ items.id }}</td>
-          <td>{{ items.drawerType }}</td>
-          <td>{{ items.drawerFunction }}</td>
-          <td>{{ items.drawerRange }}</td>
-          <td>{{ items.denominationType }}</td>
-          <td>{{ items.defaultQuantity }}</td>
-          <td>{{ items.maxValue }}</td>
+          <td>{{ items.code }}</td>
+          <td>{{ items.currency }}</td>
+          <td>{{ items.customer }}</td>
           <td>
             <a [routerLink]="'/home/branches/edit/' + items.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteBranch(items.id)" class="material-icons">delete</span>

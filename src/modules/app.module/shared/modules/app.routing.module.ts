@@ -24,41 +24,45 @@ import {VehicleTableComponent} from '../../../vehicle.module/vehicle.table.compo
 import {CashierTableComponent} from '../../../cashier.module/cashier.table.component/cashier.table.component';
 import {EmployeeTableComponent} from '../../../employee.module/employee.table.component/employee.table.component';
 import {FundTableComponent} from '../../../fund.module/fund.table.component/fund.table.component';
-import {OfficeTableComponent} from "../../../office.module/office.table.component/office.table.component";
-import {AtmTableComponent} from "../../../atm.module/atm.table.component/atm.table.component";
+import {OfficeTableComponent} from '../../../office.module/office.table.component/office.table.component';
+import {AtmTableComponent} from '../../../atm.module/atm.table.component/atm.table.component';
 import {BatteryModule} from '../../../battery.module/battery.module';
 import {BatteryTableComponent} from '../../../battery.module/battery.table.component/battery.table.component';
 import {CustomerTableComponent} from '../../../customer.module/customer.table.component/customer.table.component';
 import {DrawerTableComponent} from '../../../drawer.module/drawer.table.component/drawer.table.component';
+import {DrawerRangeTableComponent} from '../../../drawer.range.module/drawer.range.table.component/drawer.range.table.component';
+import {VehicleAddComponent} from '../../../vehicle.module/vehicle.add.component/vehicle.add.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: DashboardComponent, children: [
-      {path: 'failures', component: FailureTableComponent, children: [
-          {path: 'add', component: FailureFormComponent},
-          {path: 'edit/:id', component: FailureEditComponent}
-      ]},
-      {path: 'denominations', component: DenominationTableComponent, children: [
-          {path: 'add', component: DenominationFormComponent},
-          {path: 'edit/:id', component: DenominationEditComponent}
-      ]},
-      {path: 'countries', component: CountryTableComponent, children: [
-          {path: 'add', component: CountryFormComponent},
-          {path: 'edit/:id', component: CountryEditComponent}
-      ]},
-      {path: 'states', component: StateTableComponent, children: [
-          {path: 'add', component: StateFormComponent},
-          {path: 'edit/:id', component: StateEditComponent}
-      ]},
-      {path: 'cities', component: CityTableComponent, children: [
-          {path: 'add', component: CityFormComponent},
-          {path: 'edit/:id', component: CityEditComponent}
-      ]},
-      {path: 'branches', component: BranchTableComponent, children: [
-          {path: 'add', component: BranchFormComponent},
-          {path: 'edit/:id', component: BranchEditComponent},
-      ]},
+      {path: 'failures', component: FailureTableComponent},
+      {path: 'failures/add', component: FailureFormComponent},
+      {path: 'failures/edit/:id', component: FailureEditComponent},
+
+      {path: 'denominations', component: DenominationTableComponent},
+      {path: 'denominations/add', component: DenominationFormComponent},
+      {path: 'denominations/edit/:id', component: DenominationEditComponent},
+
+      {path: 'countries', component: CountryTableComponent},
+      {path: 'countries/add', component: CountryFormComponent},
+      {path: 'countries/edit/:id', component: CountryEditComponent},
+
+      {path: 'states', component: StateTableComponent},
+      {path: 'states/add', component: StateFormComponent},
+      {path: 'states/edit/:id', component: StateEditComponent},
+
+      {path: 'cities', component: CityTableComponent},
+      {path: 'cities/add', component: CityFormComponent},
+      {path: 'cities/edit/:id', component: CityEditComponent},
+
+      {path: 'branches', component: BranchTableComponent},
+      {path: 'branches/add', component: BranchFormComponent},
+      {path: 'branches/edit/:id', component: BranchEditComponent},
+
       {path: 'vehicles', component: VehicleTableComponent},
+      {path: 'vehicles/add', component: VehicleAddComponent},
+
       {path: 'employees', component: EmployeeTableComponent},
       {path: 'cashiers', component: CashierTableComponent},
       {path: 'funds', component: FundTableComponent},
@@ -66,7 +70,8 @@ const routes: Routes = [
       {path: 'atms', component: AtmTableComponent},
       {path: 'atm-batteries', component: BatteryTableComponent},
       {path: 'customers', component: CustomerTableComponent},
-      {path: 'drawers', component: DrawerTableComponent}
+      {path: 'drawers', component: DrawerTableComponent},
+      {path: 'drawers-and-ranges', component: DrawerRangeTableComponent}
   ]},
 ];
 

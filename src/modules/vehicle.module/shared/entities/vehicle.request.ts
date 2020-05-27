@@ -1,20 +1,19 @@
-import {BusinessUnit} from "../enums/business.unit";
-import {VehicleType} from "../enums/vehicle.type";
+import {BusinessUnit} from '../enums/business.unit';
+import {VehicleType} from '../enums/vehicle.type';
 
 export class VehicleRequest {
-  public model: string;
-  public plate: string;
-  public color: string;
-  public branchId: number;
+  public Model: string;
+  public Plate: string;
+  public Color: string;
+  public BranchId: number;
 
-  public code: string;
-  public gpsCode: string;
+  public Code: string;
+  public GpsCode: string;
 
-  public businessUnit: BusinessUnit;
-  public vehicleType: VehicleType;
+  public BusinessUnit: BusinessUnit;
+  public VehicleType: VehicleType;
 
-  public allowedAmmount: number;
-
+  public AllowedAmmount: number;
 
   constructor(model: string,
               plate: string,
@@ -25,14 +24,14 @@ export class VehicleRequest {
               businessUnit: BusinessUnit,
               vehicleType: VehicleType,
               allowedAmmount: number) {
-    this.model = model;
-    this.plate = plate;
-    this.color = color;
-    this.branchId = branchId;
-    this.code = code;
-    this.gpsCode = gpsCode;
-    this.businessUnit = businessUnit;
-    this.vehicleType = vehicleType;
-    this.allowedAmmount = allowedAmmount;
+    this.Model = model;
+    this.Plate = plate;
+    this.Color = color;
+    this.BranchId = branchId;
+    this.Code = code;
+    this.GpsCode = gpsCode;
+    this.BusinessUnit = businessUnit;
+    this.VehicleType = vehicleType;
+    this.AllowedAmmount = allowedAmmount;
   }
 }
