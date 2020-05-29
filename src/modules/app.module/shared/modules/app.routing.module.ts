@@ -32,6 +32,7 @@ import {CustomerTableComponent} from '../../../customer.module/customer.table.co
 import {DrawerTableComponent} from '../../../drawer.module/drawer.table.component/drawer.table.component';
 import {DrawerRangeTableComponent} from '../../../drawer.range.module/drawer.range.table.component/drawer.range.table.component';
 import {VehicleAddComponent} from '../../../vehicle.module/vehicle.add.component/vehicle.add.component';
+import {CustomerAddComponent} from '../../../customer.module/customer.add.component/customer.add.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -69,7 +70,10 @@ const routes: Routes = [
       {path: 'offices', component: OfficeTableComponent},
       {path: 'atms', component: AtmTableComponent},
       {path: 'atm-batteries', component: BatteryTableComponent},
+
       {path: 'customers', component: CustomerTableComponent},
+      {path: 'customers/add', component: CustomerAddComponent},
+
       {path: 'drawers', component: DrawerTableComponent},
       {path: 'drawers-and-ranges', component: DrawerRangeTableComponent}
   ]},

@@ -2,114 +2,173 @@
 <div class="container">
   <div class="col-5 offset-3">
     <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
-      <strong>Vehiculo guardado exitosamente!</strong>
+      <strong>Cliente guardado exitosamente!</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
-      <strong>Error guardando Vehiculo!</strong>
+      <strong>Error guardando Cliente!</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="card">
       <div class="card-header">
-        <strong>Agregar Vehiculo</strong>
+        <strong>Agregar Cliente</strong>
       </div>
       <div class="card-body">
-        <form [formGroup]="vehicleForm">
+        <form [formGroup]="customerForm">
           <div class="form-group">
-            <label for="vehicleModel">Modelo</label>
+            <label for="customerName">Nombre</label>
             <input type="text"
                    class="form-control"
-                   id="vehicleModel"
-                   formControlName="model"
-                   placeholder="Toyota RAV4" />
+                   id="customerName"
+                   formControlName="name"
+                   placeholder="Bancolombia" />
           </div>
           <div class="form-group">
-            <label for="vehiclePlate">Placa</label>
+            <label for="customerCorporateName">Nombre Corporativo</label>
             <input type="text"
                    class="form-control"
-                   id="vehiclePlate"
-                   formControlName="plate"
-                   placeholder="502 ABC" />
+                   id="customerCorporateName"
+                   formControlName="corporateName"
+                   placeholder="Banco de Colombia S.A" />
           </div>
           <div class="form-group">
-            <label for="vehicleColor">Color</label>
+            <label for="customerAddress">Direccion</label>
             <input type="text"
                    class="form-control"
-                   id="vehicleColor"
-                   formControlName="color"
-                   placeholder="Rojo Metalico" />
+                   id="customerAddress"
+                   formControlName="address"
+                   placeholder="Calle 100 #7 - 20" />
           </div>
           <div class="form-group">
-            <label for="branchId">Sucursal</label>
+            <label for="customerWebsite">Website</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerWebsite"
+                   formControlName="website"
+                   placeholder="www.bancolombia.com" />
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Telefono</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerPhone"
+                   formControlName="phone"
+                   placeholder="305 8201" />
+          </div>
+          <div class="form-group">
+            <label for="customerDocumentType">Tipo de Documento</label>
             <ng-select #select
-                       [items]="branches"
+                       [items]="documentType"
                        bindLabel="name"
                        dropdownPosition="auto"
                        bindValue="id"
-                       labelForId="branchId"
-                       placeholder="Seleccionar Sucursal"
+                       labelForId="customerDocumentType"
+                       placeholder="Seleccione el Tipo de Documento"
                        [virtualScroll]="true"
-                       formControlName="branchId">
+                       formControlName="documentType">
             </ng-select>
           </div>
           <div class="form-group">
-            <label for="vehicleCode">Codigo</label>
+            <label for="customerDocumentNumber">Numero de Documento</label>
             <input type="text"
                    class="form-control"
-                   id="vehicleCode"
-                   formControlName="code"
-                   placeholder="BOG4X40001" />
+                   id="customerDocumentNumber"
+                   formControlName="document"
+                   placeholder="152.308.201-8" />
           </div>
           <div class="form-group">
-            <label for="vehicleGPS">Codigo GPS</label>
-            <input type="text"
-                   class="form-control"
-                   id="vehicleGPS"
-                   formControlName="gpsCode"
-                   placeholder="100521800123591Y" />
-          </div>
-          <div class="form-group">
-            <label for="businessUnit">Unidad De Negocio</label>
+            <label for="customerHeadquarters">Ciudad Principal</label>
             <ng-select #select
-                       [items]="businessUnits"
+                       [items]="cities"
                        bindLabel="name"
                        dropdownPosition="auto"
                        bindValue="id"
-                       labelForId="businessUnit"
-                       placeholder="Seleccione Unidad de Negocio"
+                       labelForId="customerHeadquarters"
+                       placeholder="Seleccione la ciudad principal"
                        [virtualScroll]="true"
-                       formControlName="businessUnit">
+                       formControlName="headquartersId">
             </ng-select>
           </div>
           <div class="form-group">
-            <label for="vehicleType">Tipo de Vehiculo</label>
+            <label for="customerInvoiceCity">Ciudad de Facturación</label>
             <ng-select #select
-                       [items]="vehicleType"
+                       [items]="cities"
                        bindLabel="name"
                        dropdownPosition="auto"
                        bindValue="id"
-                       labelForId="vehicleType"
-                       placeholder="Seleccione el Tipo de Vehiculo"
+                       labelForId="customerInvoiceCity"
+                       placeholder="Seleccione la ciudad de facturación"
                        [virtualScroll]="true"
-                       formControlName="vehicleType">
+                       formControlName="invocingCityId">
             </ng-select>
           </div>
           <div class="form-group">
-            <label for="vehicleAllowedAmmount">Cantidad Maxima Permitida</label>
-            <input type="number"
+            <label for="customerFirstKeyPerson">Primera Persona Clave</label>
+            <input type="text"
                    class="form-control"
-                   id="vehicleAllowedAmmount"
-                   formControlName="allowedAmmount"
-                   placeholder="$100.000" />
+                   id="customerFirstKeyPerson"
+                   formControlName="firstKeyPerson"
+                   placeholder="Richard Asdrubal Acosta" />
+          </div>
+          <div class="form-group">
+            <label for="customerFirstKeyPersonTitle">Titulo de la Primera Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerFirstKeyPersonTitle"
+                   formControlName="firstKeyPersonTitle"
+                   placeholder="Gerente General" />
+          </div>
+          <div class="form-group">
+            <label for="customerSecondKeyPerson">Segunda Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerSecondKeyPerson"
+                   formControlName="secondKeyPerson"
+                   placeholder="Miguel Acosta" />
+          </div>
+          <div class="form-group">
+            <label for="customerSecondKeyPersonTitle">Titulo de la Primera Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerSecondKeyPersonTitle"
+                   formControlName="secondKeyPersonTitle"
+                   placeholder="Director de integración" />
+          </div>
+          <div class="form-group">
+            <label for="customerSubClient">Es Sub Cliente?</label>
+            <ng-select #select
+                       [items]="[{id: false, name: 'No'}, {id: true, name: 'Si'}]"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerSubClient"
+                       placeholder="¿Es Sub Cliente?"
+                       [virtualScroll]="true"
+                       (change)="onSubClient($event)"
+                       formControlName="subClient" #SubClienteRef>
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="customerSubClientId">Es Sub Cliente?</label>
+            <ng-select #select
+                       [items]="customers"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerSubClientId"
+                       placeholder="Seleccione el Cliente Principal"
+                       [virtualScroll]="true"
+                       formControlName="parentClient">
+            </ng-select>
           </div>
           <div class="form-group splitted-buttons">
             <button type="submit"
                     (click)="onSubmit()"
-                    [disabled]="!vehicleForm.valid"
+                    [disabled]="!customerForm.valid"
                     class="btn btn-primary">Guardar</button>
             <a routerLink="/home/vehicles" class="btn btn-danger">Cancelar</a>
           </div>
