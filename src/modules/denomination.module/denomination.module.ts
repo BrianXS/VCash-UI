@@ -6,7 +6,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DenominationFormComponent} from './denomination.form.component/denomination.form.component';
-import {DenominationEditComponent} from "./denomination.edit.component/denomination.edit.component";
+import {DenominationEditComponent} from './denomination.edit.component/denomination.edit.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {DenominationEditComponent} from "./denomination.edit.component/denominat
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     ReactiveFormsModule,
     DataTablesModule
   ],

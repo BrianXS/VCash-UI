@@ -20,6 +20,7 @@ export class BatteryTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.batteryService.getAllBatteries().subscribe(batteryResponse => {
+      console.log(batteryResponse);
       this.batteries = batteryResponse;
       this.dtTrigger.next();
     });

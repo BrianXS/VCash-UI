@@ -10,7 +10,7 @@ export class AtmRequest {
   public From: Date;
   public OfficeId: number;
   public AtmBatteryId?: number;
-  public DrawerRangeId?: number;
+  public DrawerRangeId: number;
 
 
   constructor(LocalizationCode: boolean,

@@ -37,14 +37,17 @@
           </div>
           <div class="form-group">
             <label for="DenominationCurrency">Divisa de la denominacion</label>
-            <select class="form-control"
-                    id="DenominationCurrency"
-                    formControlName="currency">
-              <option value="0">COP</option>
-              <option value="1">USD</option>
-              <option value="2">EUR</option>
-              <option value="3">PAB</option>
-            </select>
+            <ng-select #select
+                       id="DenominationCurrency"
+                       [items]="currencies"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="DenominationCurrency"
+                       placeholder="Seleccione una divisa."
+                       [virtualScroll]="true"
+                       formControlName="currency">
+            </ng-select>
           </div>
           <div class="form-group">
             <div>

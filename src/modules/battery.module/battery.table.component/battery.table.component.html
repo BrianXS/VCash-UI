@@ -5,7 +5,7 @@
       <h3>Bateries</h3>
     </div>
     <div class="col-1 offset-7 text-right">
-      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/atm-batteries/add">
         <span class="material-icons">add</span>
       </a>
     </div>
@@ -23,8 +23,8 @@
           <td>{{ item.id }}</td>
           <td>{{ item.code }}</td>
           <td>
-            <a [routerLink]="'/home/branches/edit/' + branch.id"><span class="material-icons">edit</span></a>
-            <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
+            <a [routerLink]="'/home/atm-batteries/edit/' + item.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteBranch(item.id)" class="material-icons">delete</span>
           </td>
         </tr>
         </tbody>

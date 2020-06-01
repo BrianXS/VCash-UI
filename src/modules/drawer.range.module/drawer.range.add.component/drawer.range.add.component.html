@@ -1,0 +1,69 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Gaveta guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Gaveta!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Gaveta</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="drawerForm">
+            <div class="form-group">
+              <label for="drawerRangeCode">Codigo</label>
+              <input class="form-control"
+                     id="drawerRangeCode"
+                     placeholder="XB3"
+                     formControlName="code"
+                     type="text">
+            </div>
+            <div class="form-group">
+              <label for="drawerRangeCustomerId">Cliente</label>
+              <ng-select #select
+                         id="drawerRangeCustomerId"
+                         [items]="customers"
+                         bindLabel="name"
+                         dropdownPosition="auto"
+                         bindValue="id"
+                         labelForId="fundCustomerId"
+                         placeholder="Seleccione un cliente."
+                         [virtualScroll]="true"
+                         formControlName="customerId">
+              </ng-select>
+            </div>
+          <div class="form-group">
+            <label for="drawerRangeCurrency">Divisa</label>
+            <ng-select #select
+                       id="drawerRangeCurrency"
+                       [items]="currencies"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="fundCustomerId"
+                       placeholder="Seleccione una divisa."
+                       [virtualScroll]="true"
+                       formControlName="currency">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!drawerForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/drawers-and-ranges" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

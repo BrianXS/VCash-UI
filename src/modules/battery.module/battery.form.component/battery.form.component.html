@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Bateria guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Bateria!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Bateria</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="batteryForm">
+          <div class="form-group">
+            <label for="batteryCode">Codigo de la Bateria</label>
+            <input type="text"
+                   class="form-control"
+                   id="batteryCode"
+                   formControlName="code"
+                   placeholder="BAT021" />
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!batteryForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/atm-batteries" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

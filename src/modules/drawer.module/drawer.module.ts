@@ -5,14 +5,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {DrawerTableComponent} from './drawer.table.component/drawer.table.component';
 import {DrawerService} from './shared/services/drawer.service';
+import {DrawerAddComponent} from './drawer.add.component/drawer.add.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    DrawerTableComponent
+    DrawerTableComponent,
+    DrawerAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     ReactiveFormsModule,
     DataTablesModule
   ],

@@ -36,6 +36,9 @@ import {CustomerAddComponent} from '../../../customer.module/customer.add.compon
 import {CashierAddComponent} from "../../../cashier.module/cashier.add.component/cashier.add.component";
 import {OfficeAddComponent} from "../../../office.module/office.add.component/office.add.component";
 import {FundAddComponent} from "../../../fund.module/fund.add.component/fund.add.component";
+import {DrawerAddComponent} from '../../../drawer.module/drawer.add.component/drawer.add.component';
+import {DrawerRangeAddComponent} from '../../../drawer.range.module/drawer.range.add.component/drawer.range.add.component';
+import {BatteryFormComponent} from '../../../battery.module/battery.form.component/battery.form.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -79,13 +82,18 @@ const routes: Routes = [
       {path: 'offices/add', component: OfficeAddComponent},
 
       {path: 'atms', component: AtmTableComponent},
+
       {path: 'atm-batteries', component: BatteryTableComponent},
+      {path: 'atm-batteries/add', component: BatteryFormComponent},
 
       {path: 'customers', component: CustomerTableComponent},
       {path: 'customers/add', component: CustomerAddComponent},
 
       {path: 'drawers', component: DrawerTableComponent},
-      {path: 'drawers-and-ranges', component: DrawerRangeTableComponent}
+      {path: 'drawers/add', component: DrawerAddComponent},
+
+      {path: 'drawers-and-ranges', component: DrawerRangeTableComponent},
+      {path: 'drawers-and-ranges/add', component: DrawerRangeAddComponent}
   ]},
 ];
 

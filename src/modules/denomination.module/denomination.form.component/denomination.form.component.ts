@@ -3,6 +3,9 @@ import {TokenVerificator} from '../../app.module/shared/services/token.verificat
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DenominationService} from '../shared/services/denomination.service';
 import {DenominationRequest} from '../shared/entities/denomination.request';
+import {EnumToArray} from '../../app.module/shared/services/enum.to.array';
+import {CustomSelectItem} from '../../app.module/shared/entities/custom.select.item';
+import {Currency} from '../../drawer.range.module/shared/enums/currency';
 
 
 @Component({
@@ -12,10 +15,13 @@ import {DenominationRequest} from '../shared/entities/denomination.request';
 })
 export class DenominationFormComponent implements OnInit {
   denominationForm: FormGroup;
+  currencies: CustomSelectItem[];
   fallido = false;
   success = false;
 
-  constructor(private tokenVerificator: TokenVerificator, private denominationService: DenominationService) {
+  constructor(private tokenVerificator: TokenVerificator,
+              private denominationService: DenominationService,
+              private enumToArray: EnumToArray) {
     this.tokenVerificator.verifyTokenValidity();
   }
 
@@ -30,6 +36,8 @@ export class DenominationFormComponent implements OnInit {
       unitsPerContainer: new FormControl(0, [Validators.required, Validators.min(0)]),
       value: new FormControl(0, [Validators.required, Validators.min(0)])
     });
+
+    this.currencies = this.enumToArray.convert(Currency);
   }
 
   submitForm() {
