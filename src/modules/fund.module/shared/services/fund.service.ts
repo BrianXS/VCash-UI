@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {FundRequest} from '../entities/fund.request';
 import {FundResponse} from '../entities/fund.response';
 import {Injectable} from '@angular/core';
+import {OfficeResponse} from "../../../office.module/shared/entities/office.response";
 
 @Injectable()
 export class FundService {
@@ -10,6 +11,10 @@ export class FundService {
 
   getAllFunds() {
     return this.http.get<FundResponse[]>('CustomerFund');
+  }
+
+  findAllFundsByCustomerId(id: number) {
+    return this.http.get<OfficeResponse[]>(`offices/funds/${id}`);
   }
 
   findFundById(customerId: number, officeId: number) {

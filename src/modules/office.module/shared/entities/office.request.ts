@@ -31,12 +31,9 @@ export class OfficeRequest {
   public ManagerEmail: string;
 
   public CityId: number;
-  public Prefix: string;
   public BusinessTypeId?: number;
 
-  constructor(Id?: number,
-              CustomerId?: number,
-              Customer?: string,
+  constructor(CustomerId?: number,
               VatcoCode?: string,
               ClientCode?: string,
               Name?: string,
@@ -58,11 +55,7 @@ export class OfficeRequest {
               ManagerDetails?: string,
               ManagerEmail?: string,
               CityId?: number,
-              City?: string,
-              Prefix?: string,
-              BusinessTypeId?: number,
-              BusinessType?: string,
-              Active?: boolean) {
+              BusinessTypeId?: number) {
     this.CustomerId = CustomerId;
     this.VatcoCode = VatcoCode;
     this.ClientCode = ClientCode;
@@ -85,7 +78,6 @@ export class OfficeRequest {
     this.ManagerDetails = ManagerDetails;
     this.ManagerEmail = ManagerEmail;
     this.CityId = CityId;
-    this.Prefix = Prefix;
     this.BusinessTypeId = BusinessTypeId;
   }
 }

@@ -21,6 +21,7 @@ export class CustomerTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.customersSerivce.getAllCustomers().subscribe(customerResponse => {
+      console.log(customerResponse);
       this.customers = customerResponse;
       this.dtTrigger.next();
     });

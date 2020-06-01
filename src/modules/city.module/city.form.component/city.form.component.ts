@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {CitiesService} from '../shared/services/citiesService';
@@ -50,10 +50,15 @@ export class CityFormComponent implements OnInit {
   }
 
   onCountrySelection() {
-    this.statesService.getAllStates().subscribe(response => {
-      this.states = response
-        .filter(x => x.countryId === parseInt(this.cityForm.value.countryId, 10));
-    });
+    if (this.cityForm.value.countryId === null) {
+      this.states = [];
+      this.cityForm.patchValue({stateId: null});
+    } else {
+      this.statesService.getAllStates().subscribe(response => {
+        this.states = response
+          .filter(x => x.countryId === parseInt(this.cityForm.value.countryId, 10));
+      });
+    }
   }
 
   submitForm() {

@@ -60,8 +60,35 @@ export class CustomerAddComponent implements OnInit {
   }
 
   onSubmit() {
-    // var customerData = new CustomerRequest();
-    // this.customerForm.value;
+    var customerData = new CustomerRequest(this.customerForm.value.name,
+      this.customerForm.value.corporateName,
+      this.customerForm.value.address,
+      this.customerForm.value.website,
+      this.customerForm.value.phone,
+      this.customerForm.value.documentType,
+      this.customerForm.value.document,
+      this.customerForm.value.headquartersId,
+      this.customerForm.value.invocingCityId,
+      this.customerForm.value.firstKeyPerson,
+      this.customerForm.value.firstKeyPersonTitle,
+      this.customerForm.value.secondKeyPerson,
+      this.customerForm.value.secondKeyPersonTitle,
+      this.customerForm.value.subClient,
+      this.customerForm.value.parentClient == undefined ?
+        null : this.customerForm.value.parentClient
+    );
+
+    console.log(customerData);
+
+    this.customersService.createCustomer(customerData).subscribe(response => {
+      this.success = true;
+      this.error = false;
+      this.customerForm.reset();
+    }, error => {
+      console.log(error);
+      this.success = false;
+      this.error = true;
+    });
   }
 
   onSubClient(evt) {

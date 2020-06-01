@@ -33,6 +33,9 @@ import {DrawerTableComponent} from '../../../drawer.module/drawer.table.componen
 import {DrawerRangeTableComponent} from '../../../drawer.range.module/drawer.range.table.component/drawer.range.table.component';
 import {VehicleAddComponent} from '../../../vehicle.module/vehicle.add.component/vehicle.add.component';
 import {CustomerAddComponent} from '../../../customer.module/customer.add.component/customer.add.component';
+import {CashierAddComponent} from "../../../cashier.module/cashier.add.component/cashier.add.component";
+import {OfficeAddComponent} from "../../../office.module/office.add.component/office.add.component";
+import {FundAddComponent} from "../../../fund.module/fund.add.component/fund.add.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -65,9 +68,16 @@ const routes: Routes = [
       {path: 'vehicles/add', component: VehicleAddComponent},
 
       {path: 'employees', component: EmployeeTableComponent},
+
       {path: 'cashiers', component: CashierTableComponent},
+      {path: 'cashiers/add', component: CashierAddComponent},
+
       {path: 'funds', component: FundTableComponent},
+      {path: 'funds/add', component: FundAddComponent},
+
       {path: 'offices', component: OfficeTableComponent},
+      {path: 'offices/add', component: OfficeAddComponent},
+
       {path: 'atms', component: AtmTableComponent},
       {path: 'atm-batteries', component: BatteryTableComponent},
 

@@ -9,22 +9,22 @@ export class CustomersService {
   }
 
   getAllCustomers() {
-    return this.http.get<CustomerResponse[]>('customers');
+    return this.http.get<CustomerResponse[]>('Customers');
   }
 
   findCustomerById(id: number) {
-    return this.http.get<CustomerResponse>(`customers/${id}`);
+    return this.http.get<CustomerResponse>(`Customers/${id}`);
   }
 
   createCustomer(customerData: CustomerRequest) {
-    return this.http.post<CustomerResponse>(`customers`, customerData);
+    return this.http.post<CustomerResponse>(`Customers`, customerData);
   }
 
   updateCustomer(id: number, customerData: CustomerRequest) {
-    return this.http.put<CustomerResponse>(`customers/${id}`, customerData);
+    return this.http.put<CustomerResponse>(`Customers/${id}`, customerData);
   }
 
   deleteCustomerById(id: number) {
-    return this.http.delete(`customers/${id}`);
+    return this.http.delete(`Customers/${id}`);
   }
 }

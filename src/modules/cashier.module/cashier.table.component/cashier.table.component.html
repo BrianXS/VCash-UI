@@ -5,7 +5,7 @@
       <h3>Cajeros de Cliente</h3>
     </div>
     <div class="col-1 offset-7 text-right">
-      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/cashiers/add">
         <span class="material-icons">add</span>
       </a>
     </div>
@@ -32,6 +32,7 @@
               Pasaporte {{cashier.document}}
             </span>
           </td>
+          <td>{{ cashier.customer }}</td>
           <td>
             <a href="'/home/branches/edit/' + cashier.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteCashier(cashier.id)" class="material-icons">delete</span>

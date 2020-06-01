@@ -141,6 +141,7 @@
           <div class="form-group">
             <label for="customerSubClient">Es Sub Cliente?</label>
             <ng-select #select
+                       id="customerSubClient"
                        [items]="[{id: false, name: 'No'}, {id: true, name: 'Si'}]"
                        bindLabel="name"
                        dropdownPosition="auto"
@@ -170,7 +171,7 @@
                     (click)="onSubmit()"
                     [disabled]="!customerForm.valid"
                     class="btn btn-primary">Guardar</button>
-            <a routerLink="/home/vehicles" class="btn btn-danger">Cancelar</a>
+            <a routerLink="/home/customers" class="btn btn-danger">Cancelar</a>
           </div>
         </form>
       </div>

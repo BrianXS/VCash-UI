@@ -5,14 +5,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {FundTableComponent} from './fund.table.component/fund.table.component';
 import {FundService} from './shared/services/fund.service';
+import {FundAddComponent} from "./fund.add.component/fund.add.component";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
-    FundTableComponent
+    FundTableComponent,
+    FundAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     ReactiveFormsModule,
     DataTablesModule
   ],

@@ -31,8 +31,8 @@
           <td>{{ item.firstKeyPersonTitle }} {{ item.firstKeyPerson }}</td>
           <td>{{ item.secondKeyPersonTitle }} {{ item.secondKeyPerson }}</td>
           <td>
-            <a [routerLink]="'/home/branches/edit/' + branch.id"><span class="material-icons">edit</span></a>
-            <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
+            <a [routerLink]="'/home/branches/edit/' + item.id"><span class="material-icons">edit</span></a>
+            <span (click)="deleteBranch(item.id)" class="material-icons">delete</span>
           </td>
         </tr>
         </tbody>
