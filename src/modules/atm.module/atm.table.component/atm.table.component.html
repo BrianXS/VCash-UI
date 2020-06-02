@@ -5,7 +5,7 @@
       <h3>ATMs</h3>
     </div>
     <div class="col-1 offset-7 text-right">
-      <a class="btn btn-primary custom-button-padding" routerLink="/home/branches/add">
+      <a class="btn btn-primary custom-button-padding" routerLink="/home/atms/add">
         <span class="material-icons">add</span>
       </a>
     </div>
@@ -23,6 +23,7 @@
         <tbody>
         <tr *ngFor="let items of atms">
           <td>{{ items.id }}</td>
+          <td>{{ items.office }}</td>
           <td>{{ items.atmBattery }}</td>
           <td>{{ items.drawerRange }}</td>
           <td>

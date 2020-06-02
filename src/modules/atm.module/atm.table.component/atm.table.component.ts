@@ -21,6 +21,7 @@ export class AtmTableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.vehiclesService.getAllATMs().subscribe(response => {
       this.atms = response;
+      console.log(response);
       this.dtTrigger.next();
     });
   }

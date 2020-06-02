@@ -39,6 +39,7 @@ import {FundAddComponent} from "../../../fund.module/fund.add.component/fund.add
 import {DrawerAddComponent} from '../../../drawer.module/drawer.add.component/drawer.add.component';
 import {DrawerRangeAddComponent} from '../../../drawer.range.module/drawer.range.add.component/drawer.range.add.component';
 import {BatteryFormComponent} from '../../../battery.module/battery.form.component/battery.form.component';
+import {AtmAddComponent} from "../../../atm.module/atm.add.component/atm.add.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -82,6 +83,7 @@ const routes: Routes = [
       {path: 'offices/add', component: OfficeAddComponent},
 
       {path: 'atms', component: AtmTableComponent},
+      {path: 'atms/add', component: AtmAddComponent},
 
       {path: 'atm-batteries', component: BatteryTableComponent},
       {path: 'atm-batteries/add', component: BatteryFormComponent},

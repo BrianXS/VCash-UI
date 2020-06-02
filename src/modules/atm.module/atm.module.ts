@@ -5,14 +5,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {AtmTableComponent} from './atm.table.component/atm.table.component';
 import {AtmService} from './shared/services/atm.service';
+import {AtmAddComponent} from "./atm.add.component/atm.add.component";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
-    AtmTableComponent
+    AtmTableComponent,
+    AtmAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     ReactiveFormsModule,
     DataTablesModule
   ],
