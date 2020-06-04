@@ -5,12 +5,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {BatteryTableComponent} from './battery.table.component/battery.table.component';
 import {BatteryService} from './shared/services/battery.service';
-import {BatteryFormComponent} from './battery.form.component/battery.form.component';
+import {BatteryAddComponent} from './battery.add.component/battery.add.component';
+import {BatteryEditComponent} from './battery.edit.component/battery.edit.component';
 
 @NgModule({
   declarations: [
     BatteryTableComponent,
-    BatteryFormComponent
+    BatteryAddComponent,
+    BatteryEditComponent
   ],
   imports: [
     BrowserModule,

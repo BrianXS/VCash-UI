@@ -9,11 +9,11 @@ import {Currency} from '../../drawer.range.module/shared/enums/currency';
 
 
 @Component({
-  selector: 'app-denomination-form',
-  templateUrl: './denomination.form.component.html',
-  styleUrls: ['./denomination.form.component.css']
+  selector: 'app-denomination-add',
+  templateUrl: './denomination.add.component.html',
+  styleUrls: ['./denomination.add.component.css']
 })
-export class DenominationFormComponent implements OnInit {
+export class DenominationAddComponent implements OnInit {
   denominationForm: FormGroup;
   currencies: CustomSelectItem[];
   fallido = false;

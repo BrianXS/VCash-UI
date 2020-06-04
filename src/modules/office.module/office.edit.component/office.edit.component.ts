@@ -9,15 +9,16 @@ import {OfficeService} from '../shared/services/office.service';
 import {Coverage} from '../shared/enums/Coverage';
 import {OfficeType} from '../shared/enums/OfficeType';
 import {CitiesService} from '../../city.module/shared/services/citiesService';
+import {CustomerRequest} from '../../customer.module/shared/entities/customer.request';
 import {CityResponse} from '../../city.module/shared/entities/city.response';
 import {OfficeRequest} from '../shared/entities/office.request';
 
 @Component({
-  selector: 'app-office-add',
-  templateUrl: './office.add.component.html',
-  styleUrls: ['./office.add.component.css']
+  selector: 'app-office-edit',
+  templateUrl: './office.edit.component.html',
+  styleUrls: ['./office.edit.component.css']
 })
-export class OfficeAddComponent implements OnInit {
+export class OfficeEditComponent implements OnInit {
   officeType: CustomSelectItem[] = [];
   customers: CustomerResponse[] = [];
   cities: CityResponse[] = [];

@@ -7,11 +7,11 @@ import {FailuresService} from '../shared/services/failures.service';
 
 
 @Component({
-  selector: 'app-failure-form',
-  templateUrl: './failure.form.component.html',
-  styleUrls: ['./failure.form.component.css']
+  selector: 'app-failure-add',
+  templateUrl: './failure.add.component.html',
+  styleUrls: ['./failure.add.component.css']
 })
-export class FailureFormComponent implements OnInit {
+export class FailureAddComponent implements OnInit {
   failureForm: FormGroup;
   fallido = false;
   success = false;

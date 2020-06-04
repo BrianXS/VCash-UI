@@ -1,0 +1,180 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Cliente guardado exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Cliente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Cliente</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="customerForm">
+          <div class="form-group">
+            <label for="customerName">Nombre</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerName"
+                   formControlName="name"
+                   placeholder="Bancolombia" />
+          </div>
+          <div class="form-group">
+            <label for="customerCorporateName">Nombre Corporativo</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerCorporateName"
+                   formControlName="corporateName"
+                   placeholder="Banco de Colombia S.A" />
+          </div>
+          <div class="form-group">
+            <label for="customerAddress">Direccion</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerAddress"
+                   formControlName="address"
+                   placeholder="Calle 100 #7 - 20" />
+          </div>
+          <div class="form-group">
+            <label for="customerWebsite">Website</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerWebsite"
+                   formControlName="website"
+                   placeholder="www.bancolombia.com" />
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Telefono</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerPhone"
+                   formControlName="phone"
+                   placeholder="305 8201" />
+          </div>
+          <div class="form-group">
+            <label for="customerDocumentType">Tipo de Documento</label>
+            <ng-select #select
+                       [items]="documentType"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerDocumentType"
+                       placeholder="Seleccione el Tipo de Documento"
+                       [virtualScroll]="true"
+                       formControlName="documentType">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="customerDocumentNumber">Numero de Documento</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerDocumentNumber"
+                   formControlName="document"
+                   placeholder="152.308.201-8" />
+          </div>
+          <div class="form-group">
+            <label for="customerHeadquarters">Ciudad Principal</label>
+            <ng-select #select
+                       [items]="cities"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerHeadquarters"
+                       placeholder="Seleccione la ciudad principal"
+                       [virtualScroll]="true"
+                       formControlName="headquartersId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="customerInvoiceCity">Ciudad de Facturación</label>
+            <ng-select #select
+                       [items]="cities"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerInvoiceCity"
+                       placeholder="Seleccione la ciudad de facturación"
+                       [virtualScroll]="true"
+                       formControlName="invocingCityId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="customerFirstKeyPerson">Primera Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerFirstKeyPerson"
+                   formControlName="firstKeyPerson"
+                   placeholder="Richard Asdrubal Acosta" />
+          </div>
+          <div class="form-group">
+            <label for="customerFirstKeyPersonTitle">Titulo de la Primera Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerFirstKeyPersonTitle"
+                   formControlName="firstKeyPersonTitle"
+                   placeholder="Gerente General" />
+          </div>
+          <div class="form-group">
+            <label for="customerSecondKeyPerson">Segunda Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerSecondKeyPerson"
+                   formControlName="secondKeyPerson"
+                   placeholder="Miguel Acosta" />
+          </div>
+          <div class="form-group">
+            <label for="customerSecondKeyPersonTitle">Titulo de la Primera Persona Clave</label>
+            <input type="text"
+                   class="form-control"
+                   id="customerSecondKeyPersonTitle"
+                   formControlName="secondKeyPersonTitle"
+                   placeholder="Director de integración" />
+          </div>
+          <div class="form-group">
+            <label for="customerSubClient">Es Sub Cliente?</label>
+            <ng-select #select
+                       id="customerSubClient"
+                       [items]="[{id: false, name: 'No'}, {id: true, name: 'Si'}]"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerSubClient"
+                       placeholder="¿Es Sub Cliente?"
+                       [virtualScroll]="true"
+                       (change)="onSubClient($event)"
+                       formControlName="subClient" #SubClienteRef>
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="customerSubClientId">Es Sub Cliente?</label>
+            <ng-select #select
+                       [items]="customers"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="customerSubClientId"
+                       placeholder="Seleccione el Cliente Principal"
+                       [virtualScroll]="true"
+                       formControlName="parentClient">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="onSubmit()"
+                    [disabled]="!customerForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/customers" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

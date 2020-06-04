@@ -7,11 +7,13 @@ import {VehicleTableComponent} from './vehicle.table.component/vehicle.table.com
 import {VehiclesService} from './shared/services/vehicles.service';
 import {VehicleAddComponent} from './vehicle.add.component/vehicle.add.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {VehicleEditComponent} from './vehicle.edit.component/vehicle.edit.component';
 
 @NgModule({
   declarations: [
     VehicleTableComponent,
-    VehicleAddComponent
+    VehicleAddComponent,
+    VehicleEditComponent
   ],
   imports: [
     BrowserModule,

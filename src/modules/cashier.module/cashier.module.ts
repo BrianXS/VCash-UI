@@ -5,13 +5,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {CashierTableComponent} from './cashier.table.component/cashier.table.component';
 import {CashiersService} from './shared/services/cashiers.service';
-import {CashierAddComponent} from "./cashier.add.component/cashier.add.component";
-import {NgSelectModule} from "@ng-select/ng-select";
+import {CashierAddComponent} from './cashier.add.component/cashier.add.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {CashierEditComponent} from './cashier.edit.component/cashier.edit.component';
 
 @NgModule({
   declarations: [
     CashierTableComponent,
-    CashierAddComponent
+    CashierAddComponent,
+    CashierEditComponent
   ],
   imports: [
     BrowserModule,

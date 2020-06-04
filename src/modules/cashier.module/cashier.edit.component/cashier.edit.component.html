@@ -1,0 +1,77 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Cajero guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Cajero!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Cajero</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="cashierForm">
+          <div class="form-group">
+            <label for="cashierName">Nombre</label>
+            <input type="text"
+                   class="form-control"
+                   id="cashierName"
+                   formControlName="fullName"
+                   placeholder="Richardo Asdrubal" />
+          </div>
+          <div class="form-group">
+            <label for="cashierDocumentType">Tipo de Documento</label>
+            <ng-select #select
+                       id="cashierDocumentType"
+                       [items]="documentTypes"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="cashierDocumentType"
+                       placeholder="Select a state"
+                       [virtualScroll]="true"
+                       formControlName="documentType">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="cashierDocument">Documento</label>
+            <input type="text"
+                   class="form-control"
+                   id="cashierDocument"
+                   formControlName="document"
+                   placeholder="1063102" />
+          </div>
+          <div class="form-group">
+            <label for="cashierCustomer">Cliente</label>
+            <ng-select #select
+                       id="cashierCustomer"
+                       [items]="customers"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="cashierCustomer"
+                       placeholder="Selecciona un cliente"
+                       [virtualScroll]="true"
+                       formControlName="customerId">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!cashierForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/cashiers" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

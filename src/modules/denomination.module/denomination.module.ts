@@ -5,14 +5,14 @@ import {DenominationTableComponent} from './denomination.table.component/denomin
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.module/shared/modules/app.routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DenominationFormComponent} from './denomination.form.component/denomination.form.component';
+import {DenominationAddComponent} from './denomination.add.component/denomination.add.component';
 import {DenominationEditComponent} from './denomination.edit.component/denomination.edit.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
+    DenominationAddComponent,
     DenominationTableComponent,
-    DenominationFormComponent,
     DenominationEditComponent
   ],
   imports: [

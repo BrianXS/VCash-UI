@@ -1,17 +1,15 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
-import {CountryResponse} from '../shared/entities/country.response';
+import {Component, OnInit} from '@angular/core';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {CountriesService} from '../shared/services/countries.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CountryRequest} from '../shared/entities/country.request';
 
 @Component({
-  selector: 'app-country-form',
-  templateUrl: './country.form.component.html',
-  styleUrls: ['./country.form.component.css']
+  selector: 'app-country-add',
+  templateUrl: './country.add.component.html',
+  styleUrls: ['./country.add.component.css']
 })
-export class CountryFormComponent implements OnInit {
+export class CountryAddComponent implements OnInit {
   countryForm: FormGroup;
   success: boolean;
   error: boolean;

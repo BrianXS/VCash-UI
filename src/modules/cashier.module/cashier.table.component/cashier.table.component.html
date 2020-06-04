@@ -34,7 +34,7 @@
           </td>
           <td>{{ cashier.customer }}</td>
           <td>
-            <a href="'/home/branches/edit/' + cashier.id"><span class="material-icons">edit</span></a>
+            <a [routerLink]="'/home/cashiers/edit/' + cashier.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteCashier(cashier.id)" class="material-icons">delete</span>
           </td>
         </tr>

@@ -8,11 +8,11 @@ import {CountryResponse} from '../../country.module/shared/entities/country.resp
 
 
 @Component({
-  selector: 'app-state-form',
-  templateUrl: './state.form.component.html',
-  styleUrls: ['./state.form.component.css']
+  selector: 'app-state-add',
+  templateUrl: './state.add.component.html',
+  styleUrls: ['./state.add.component.css']
 })
-export class StateFormComponent implements OnInit {
+export class StateAddComponent implements OnInit {
   stateForm: FormGroup;
   countries: CountryResponse[];
   success: boolean;

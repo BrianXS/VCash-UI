@@ -32,8 +32,8 @@ export class AtmTableComponent implements OnInit, OnDestroy {
 
   deleteBranch(id: number): void {
     this.vehiclesService.deleteATMById(id).subscribe(response => {
-      this.vehiclesService.getAllATMs().subscribe(response => {
-        this.atms = response;
+      this.vehiclesService.getAllATMs().subscribe(atmresponse => {
+        this.atms = atmresponse;
       });
     });
   }

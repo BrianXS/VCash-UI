@@ -2,20 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {BranchesServices} from '../shared/services/branch.service';
-import {StatesService} from '../../state.module/shared/services/statesService';
-import {CountriesService} from '../../country.module/shared/services/countries.service';
-import {BranchResponse} from '../shared/entities/branch.response';
-import {CountryResponse} from '../../country.module/shared/entities/country.response';
-import {StateResponse} from '../../state.module/shared/entities/state.response';
 import {BranchRequest} from '../shared/entities/branch.request';
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-branch-form',
-  templateUrl: './branch.form.component.html',
-  styleUrls: ['./branch.form.component.css']
+  selector: 'app-branch-add',
+  templateUrl: './branch.add.component.html',
+  styleUrls: ['./branch.add.component.css']
 })
-export class BranchFormComponent implements OnInit {
+export class BranchAddComponent implements OnInit {
   branchForm: FormGroup;
   success: boolean;
   error: boolean;
@@ -38,8 +33,6 @@ export class BranchFormComponent implements OnInit {
       this.branchForm.value.code,
       this.branchForm.value.lat,
       this.branchForm.value.lng);
-
-    console.log(branchData)
 
     this.branchesServices.createBranch(branchData).subscribe(response => {
       this.success = true;

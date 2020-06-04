@@ -13,10 +13,10 @@ import {BranchesServices} from '../../branch.module/shared/services/branch.servi
 
 @Component({
   selector: 'app-city-form',
-  templateUrl: './city.form.component.html',
-  styleUrls: ['./city.form.component.css']
+  templateUrl: './city.add.component.html',
+  styleUrls: ['./city.add.component.css']
 })
-export class CityFormComponent implements OnInit {
+export class CityAddComponent implements OnInit {
   cityForm: FormGroup;
   success: boolean;
   error: boolean;

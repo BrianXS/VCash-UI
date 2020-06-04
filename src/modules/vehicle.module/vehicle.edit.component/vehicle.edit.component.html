@@ -1,0 +1,120 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Vehiculo guardado exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Vehiculo!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Vehiculo</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="vehicleForm">
+          <div class="form-group">
+            <label for="vehicleModel">Modelo</label>
+            <input type="text"
+                   class="form-control"
+                   id="vehicleModel"
+                   formControlName="model"
+                   placeholder="Toyota RAV4" />
+          </div>
+          <div class="form-group">
+            <label for="vehiclePlate">Placa</label>
+            <input type="text"
+                   class="form-control"
+                   id="vehiclePlate"
+                   formControlName="plate"
+                   placeholder="502 ABC" />
+          </div>
+          <div class="form-group">
+            <label for="vehicleColor">Color</label>
+            <input type="text"
+                   class="form-control"
+                   id="vehicleColor"
+                   formControlName="color"
+                   placeholder="Rojo Metalico" />
+          </div>
+          <div class="form-group">
+            <label for="branchId">Sucursal</label>
+            <ng-select #select
+                       [items]="branches"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="branchId"
+                       placeholder="Seleccionar Sucursal"
+                       [virtualScroll]="true"
+                       formControlName="branchId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="vehicleCode">Codigo</label>
+            <input type="text"
+                   class="form-control"
+                   id="vehicleCode"
+                   formControlName="code"
+                   placeholder="BOG4X40001" />
+          </div>
+          <div class="form-group">
+            <label for="vehicleGPS">Codigo GPS</label>
+            <input type="text"
+                   class="form-control"
+                   id="vehicleGPS"
+                   formControlName="gpsCode"
+                   placeholder="100521800123591Y" />
+          </div>
+          <div class="form-group">
+            <label for="businessUnit">Unidad De Negocio</label>
+            <ng-select #select
+                       [items]="businessUnits"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="businessUnit"
+                       placeholder="Seleccione Unidad de Negocio"
+                       [virtualScroll]="true"
+                       formControlName="businessUnit">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="vehicleType">Tipo de Vehiculo</label>
+            <ng-select #select
+                       [items]="vehicleType"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="vehicleType"
+                       placeholder="Seleccione el Tipo de Vehiculo"
+                       [virtualScroll]="true"
+                       formControlName="vehicleType">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="vehicleAllowedAmmount">Cantidad Maxima Permitida</label>
+            <input type="number"
+                   class="form-control"
+                   id="vehicleAllowedAmmount"
+                   formControlName="allowedAmmount"
+                   placeholder="$100.000" />
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="onSubmit()"
+                    [disabled]="!vehicleForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/vehicles" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

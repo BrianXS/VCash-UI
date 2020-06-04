@@ -7,11 +7,13 @@ import {CustomersService} from './shared/services/customers.service';
 import {CustomerTableComponent} from './customer.table.component/customer.table.component';
 import {CustomerAddComponent} from './customer.add.component/customer.add.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {CustomerEditComponent} from './customer.edit.component/customer.edit.component';
 
 @NgModule({
   declarations: [
     CustomerTableComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule,
