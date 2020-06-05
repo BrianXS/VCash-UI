@@ -45,6 +45,10 @@ import {BatteryEditComponent} from '../../../battery.module/battery.edit.compone
 import {CashierEditComponent} from '../../../cashier.module/cashier.edit.component/cashier.edit.component';
 import {VehicleEditComponent} from '../../../vehicle.module/vehicle.edit.component/vehicle.edit.component';
 import {OfficeEditComponent} from '../../../office.module/office.edit.component/office.edit.component';
+import {CustomerEditComponent} from '../../../customer.module/customer.edit.component/customer.edit.component';
+import {DrawerEditComponent} from '../../../drawer.module/drawer.edit.component/drawer.edit.component';
+import {DrawerRangeEditComponent} from '../../../drawer.range.module/drawer.range.edit.component/drawer.range.edit.component';
+import {FundEditComponent} from '../../../fund.module/fund.edit.component/fund.edit.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -85,7 +89,7 @@ const routes: Routes = [
 
       {path: 'funds', component: FundTableComponent},
       {path: 'funds/add', component: FundAddComponent},
-      {path: 'funds/edit/:id', component: FundAddComponent},
+      {path: 'funds/edit/:customerId/:officeId', component: FundEditComponent},
 
       {path: 'offices', component: OfficeTableComponent},
       {path: 'offices/add', component: OfficeAddComponent},
@@ -101,15 +105,15 @@ const routes: Routes = [
 
       {path: 'customers', component: CustomerTableComponent},
       {path: 'customers/add', component: CustomerAddComponent},
-      // {path: 'customers/edit/:id', component: CustomerAddComponent},
+      {path: 'customers/edit/:id', component: CustomerEditComponent},
 
       {path: 'drawers', component: DrawerTableComponent},
       {path: 'drawers/add', component: DrawerAddComponent},
-      // {path: 'drawers/edit/:id', component: DrawerAddComponent},
+      {path: 'drawers/edit/:id', component: DrawerEditComponent},
 
       {path: 'drawers-and-ranges', component: DrawerRangeTableComponent},
-      {path: 'drawers-and-ranges/add', component: DrawerRangeAddComponent}
-      // {path: 'drawers-and-ranges/edit/:id', component: DrawerRangeAddComponent}
+      {path: 'drawers-and-ranges/add', component: DrawerRangeAddComponent},
+      {path: 'drawers-and-ranges/edit/:id', component: DrawerRangeEditComponent}
   ]},
 ];
 

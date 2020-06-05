@@ -39,7 +39,7 @@
           <td>{{ branch.vehicleType }}</td>
           <td>{{ branch.allowedAmmount }}</td>
           <td>
-            <a [routerLink]="'/home/branches/edit/' + branch.id"><span class="material-icons">edit</span></a>
+            <a [routerLink]="'/home/vehicles/edit/' + branch.id"><span class="material-icons">edit</span></a>
             <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
           </td>
         </tr>

@@ -11,6 +11,7 @@ import {BusinessUnit} from '../shared/enums/business.unit';
 import {CustomSelectItem} from '../../app.module/shared/entities/custom.select.item';
 import {VehicleRequest} from '../shared/entities/vehicle.request';
 import {VehicleType} from '../shared/enums/vehicle.type';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-edit',
@@ -28,11 +29,10 @@ export class VehicleEditComponent implements OnInit {
   constructor(private tokenVerificator: TokenVerificator,
               private vehiclesService: VehiclesService,
               private branchesService: BranchesServices,
+              private currentRoute: ActivatedRoute,
               private enumToArray: EnumToArray) {
     tokenVerificator.verifyTokenValidity();
-  }
 
-  ngOnInit(): void {
     this.vehicleForm = new FormGroup({
       model: new FormControl(null, Validators.required),
       plate: new FormControl(null, Validators.required),
@@ -44,13 +44,29 @@ export class VehicleEditComponent implements OnInit {
       vehicleType: new FormControl(null, Validators.required),
       allowedAmmount: new FormControl(null, [Validators.required, Validators.min(0)])
     });
+  }
 
+  ngOnInit(): void {
     this.branchesService.getAllBranches().subscribe(branchesResponse => {
       this.branches = branchesResponse;
     });
 
     this.businessUnits = this.enumToArray.convert(BusinessUnit);
     this.vehicleType  = this.enumToArray.convert(VehicleType);
+
+    this.vehiclesService.findVehicleById(this.currentRoute.snapshot.params.id).subscribe(response => {
+      this.vehicleForm.patchValue({
+        model: response.model,
+        plate: response.plate,
+        color: response.color,
+        branchId: response.branchId,
+        code: response.code,
+        gpsCode: response.gpsCode,
+        businessUnit: response.businessUnit,
+        vehicleType: response.vehicleType,
+        allowedAmmount: response.allowedAmmount
+      });
+    });
   }
 
   onSubmit() {
@@ -64,10 +80,9 @@ export class VehicleEditComponent implements OnInit {
       this.vehicleForm.value.vehicleType,
       this.vehicleForm.value.allowedAmmount);
 
-    this.vehiclesService.createVehicle(vehicleData).subscribe(vehicleResponse => {
+    this.vehiclesService.updateVehicle(this.currentRoute.snapshot.params.id, vehicleData).subscribe(vehicleResponse => {
       this.success = true;
       this.error = false;
-      this.vehicleForm.reset();
     }, error => {
       this.success = false;
       this.error = true;

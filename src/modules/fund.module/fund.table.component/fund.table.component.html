@@ -23,7 +23,7 @@
           <td>{{ fund.customer }}</td>
           <td>{{ fund.office }}</td>
           <td>
-            <a [routerLink]="'/home/branches/edit/' + fund.id"><span class="material-icons">edit</span></a>
+            <a [routerLink]="'/home/funds/edit/' + fund.customerId + '/' + fund.officeId"><span class="material-icons">edit</span></a>
             <span (click)="deleteBranch(branch.id)" class="material-icons">delete</span>
           </td>
         </tr>

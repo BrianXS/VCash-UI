@@ -7,11 +7,13 @@ import {DrawerRangeTableComponent} from './drawer.range.table.component/drawer.r
 import {DrawerRangeService} from './shared/services/drawer.range.service';
 import {DrawerRangeAddComponent} from './drawer.range.add.component/drawer.range.add.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {DrawerRangeEditComponent} from './drawer.range.edit.component/drawer.range.edit.component';
 
 @NgModule({
   declarations: [
     DrawerRangeTableComponent,
-    DrawerRangeAddComponent
+    DrawerRangeAddComponent,
+    DrawerRangeEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs'
+import {Subject} from 'rxjs';
 import {TokenVerificator} from '../../app.module/shared/services/token.verificator';
 import {StatesService} from '../shared/services/statesService';
 import {StateResponse} from '../shared/entities/state.response';

@@ -10,6 +10,7 @@ import {CitiesService} from '../../city.module/shared/services/citiesService';
 import {CityResponse} from '../../city.module/shared/entities/city.response';
 import {CustomerResponse} from '../shared/entities/customer.response';
 import {CustomerRequest} from '../shared/entities/customer.request';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -28,11 +29,10 @@ export class CustomerEditComponent implements OnInit {
   constructor(private tokenVerificator: TokenVerificator,
               private customersService: CustomersService,
               private citiesService: CitiesService,
+              private currentRoute: ActivatedRoute,
               private enumToArray: EnumToArray) {
     tokenVerificator.verifyTokenValidity();
-  }
 
-  ngOnInit(): void {
     this.customerForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       corporateName: new FormControl(null, Validators.required),
@@ -50,6 +50,9 @@ export class CustomerEditComponent implements OnInit {
       subClient: new FormControl(null),
       parentClient: new FormControl(null),
     });
+  }
+
+  ngOnInit(): void {
 
     this.citiesService.getAllCities().subscribe(citiesResponse => {
       this.cities = citiesResponse;
@@ -60,7 +63,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   onSubmit() {
-    var customerData = new CustomerRequest(this.customerForm.value.name,
+    const customerData = new CustomerRequest(this.customerForm.value.name,
       this.customerForm.value.corporateName,
       this.customerForm.value.address,
       this.customerForm.value.website,
@@ -74,11 +77,8 @@ export class CustomerEditComponent implements OnInit {
       this.customerForm.value.secondKeyPerson,
       this.customerForm.value.secondKeyPersonTitle,
       this.customerForm.value.subClient,
-      this.customerForm.value.parentClient == undefined ?
-        null : this.customerForm.value.parentClient
+      this.customerForm.value.parentClient === undefined ? null : this.customerForm.value.parentClient
     );
-
-    console.log(customerData);
 
     this.customersService.createCustomer(customerData).subscribe(response => {
       this.success = true;

@@ -7,6 +7,7 @@ import {CustomerResponse} from '../../customer.module/shared/entities/customer.r
 import {OfficeResponse} from '../../office.module/shared/entities/office.response';
 import {FundRequest} from '../shared/entities/fund.request';
 import {FundService} from '../shared/services/fund.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-fund-edit',
@@ -23,18 +24,31 @@ export class FundEditComponent implements OnInit {
   constructor(private tokenVerificator: TokenVerificator,
               private officesService: OfficeService,
               private customersService: CustomersService,
+              private currentRoute: ActivatedRoute,
               private fundService: FundService) {
-  }
+    this.tokenVerificator.verifyTokenValidity();
 
-  ngOnInit(): void {
     this.fundForm = new FormGroup({
       fundId: new FormControl(null, Validators.required),
       customerId: new FormControl(null, Validators.required)
     });
+  }
 
+  ngOnInit(): void {
     this.customersService.getAllCustomers().subscribe(response => {
       this.customers = response;
     });
+
+    this.fundService
+      .findFundById(this.currentRoute.snapshot.params.customerId, this.currentRoute.snapshot.params.officeId)
+      .subscribe(response => {
+        this.onCustomerChange({id: response.customerId});
+
+        this.fundForm.patchValue({
+          fundId: response.officeId,
+          customerId: response.customerId
+        });
+      });
   }
 
   onCustomerChange(evt) {
@@ -51,13 +65,14 @@ export class FundEditComponent implements OnInit {
   submitForm() {
     const fundData = new FundRequest(this.fundForm.value.customerId, this.fundForm.value.fundId);
 
-    this.fundService.createFund(fundData).subscribe(response => {
-      this.success = true;
-      this.error = false;
-      this.fundForm.reset();
-    }, error => {
-      this.success = false;
-      this.error = true;
-    });
+    this.fundService.updateFund(this.currentRoute.snapshot.params.customerId,
+                                this.currentRoute.snapshot.params.officeId,  fundData)
+      .subscribe(response => {
+        this.success = true;
+        this.error = false;
+      }, error => {
+        this.success = false;
+        this.error = true;
+      });
   }
 }

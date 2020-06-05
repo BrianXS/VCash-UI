@@ -12,6 +12,7 @@ import {CitiesService} from '../../city.module/shared/services/citiesService';
 import {CustomerRequest} from '../../customer.module/shared/entities/customer.request';
 import {CityResponse} from '../../city.module/shared/entities/city.response';
 import {OfficeRequest} from '../shared/entities/office.request';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-office-edit',
@@ -31,11 +32,10 @@ export class OfficeEditComponent implements OnInit {
               private officeService: OfficeService,
               private customersService: CustomersService,
               private citiesService: CitiesService,
+              private currentRoute: ActivatedRoute,
               private enumToArray: EnumToArray) {
     tokenVerificator.verifyTokenValidity();
-  }
 
-  ngOnInit(): void {
     this.officeForm =  new FormGroup({
       customerId: new FormControl(null, Validators.required),
       vatcoCode: new FormControl(null),
@@ -60,9 +60,11 @@ export class OfficeEditComponent implements OnInit {
       managerEmail:  new FormControl(null, Validators.required),
       cityId:  new FormControl(null, Validators.required),
       prefix:  new FormControl(null, Validators.required),
-      businessTypeId:  new FormControl(null),
+      businessTypeId:  new FormControl(null)
     });
+  }
 
+  ngOnInit(): void {
     this.customersService.getAllCustomers().subscribe(response => {
       this.customers = response;
     });
@@ -73,6 +75,37 @@ export class OfficeEditComponent implements OnInit {
 
     this.coverage = this.enumToArray.convert(Coverage);
     this.officeType = this.enumToArray.convert(OfficeType);
+
+    this.officeService.findOfficeById(this.currentRoute.snapshot.params.id).subscribe(response => {
+      console.log(response.from);
+
+      this.officeForm.patchValue({
+        customerId: response.customerId,
+        vatcoCode: response.vatcoCode,
+        clientCode: response.clientCode,
+        name: response.name,
+        address: response.address,
+        phone: response.phone,
+        coverage: response.coverage,
+        officeType: response.officeType,
+        lat:  response.lat,
+        lng:  response.lng,
+        from:  response.from.toString().replace('T00:00:00', ''),
+        until:  response.until.toString().replace('T00:00:00', ''),
+        hasKits:  response.hasKits,
+        hasKeys:  response.hasKeys,
+        hasEnvelopes:  response.hasEnvelopes,
+        hasCheques:  response.hasCheques,
+        hasDocuments:  response.hasDocuments,
+        isFund:  response.isFund,
+        manager:  response.manager,
+        managerDetails:  response.managerDetails,
+        managerEmail: response.managerEmail,
+        cityId:  response.cityId,
+        prefix:  response.prefix,
+        businessTypeId:  response.businessTypeId
+      });
+    });
   }
 
   submitForm() {
@@ -87,11 +120,11 @@ export class OfficeEditComponent implements OnInit {
       parseFloat(this.officeForm.value.lat),
       parseFloat(this.officeForm.value.lng),
       this.officeForm.value.from,
-      new Date('0001-01-00'),
+      null,
       this.officeForm.value.hasKits === 'true',
       this.officeForm.value.hasKeys === 'true',
       this.officeForm.value.hasEnvelopes === 'true',
-      this.officeForm.value.hasCheques == 'true',
+      this.officeForm.value.hasCheques === 'true',
       this.officeForm.value.hasDocuments === 'true',
       this.officeForm.value.isFund === 'true',
       this.officeForm.value.manager,
@@ -100,10 +133,15 @@ export class OfficeEditComponent implements OnInit {
       this.officeForm.value.cityId
       );
 
-    this.officeService.createOffice(officeData).subscribe(response => {
+    if (this.officeForm.value.until !== '') {
+      officeData.Until = this.officeForm.value.until;
+    } else {
+      officeData.Until = new Date('0001-01-00');
+    }
+
+    this.officeService.updateOffice(this.currentRoute.snapshot.params.id, officeData).subscribe(response => {
       this.success = true;
       this.error = false;
-      this.officeForm.reset();
     }, error => {
       console.log(error);
       this.success = false;

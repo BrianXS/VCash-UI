@@ -1,0 +1,106 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Gaveta guardada exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Gaveta!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Gaveta</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="drawerForm">
+          <div class="form-group">
+            <label for="drawerMaxValue">Valor Maximo</label>
+            <input class="form-control"
+                   id="drawerMaxValue"
+                   placeholder="150.000.000"
+                   formControlName="maxValue"
+                   type="text">
+          </div>
+          <div class="form-group">
+            <label for="drawerDefaultQuantity">Cantidad por Defecto</label>
+            <input class="form-control"
+                   id="drawerDefaultQuantity"
+                   placeholder="2000"
+                   formControlName="defaultQuantity"
+                   type="text">
+          </div>
+          <div class="form-group">
+            <label for="drawerType">Tipo De Gaveta</label>
+            <ng-select #select
+                       id="drawerType"
+                       [items]="drawerTypes"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="drawerType"
+                       placeholder="Seleccione un tipo de gaveta."
+                       [virtualScroll]="true"
+                       formControlName="drawerType">
+            </ng-select>
+          </div>
+          <div class="form-group">
+              <label for="drawerFunction">Tipo De Funcion de Gaveta</label>
+            <ng-select #select
+                       id="drawerFunction"
+                       [items]="drawerFunctions"
+                       bindLabel="name"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="drawerFunction"
+                       placeholder="Seleccione un tipo de funcion de gaveta."
+                       [virtualScroll]="true"
+                       formControlName="drawerFunction">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="drawerRangeId">Rango</label>
+            <ng-select #select
+                       id="drawerRangeId"
+                       [items]="drawerRanges"
+                       bindLabel="code"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="drawerRangeId"
+                       (change)="onRangeChange($event)"
+                       placeholder="Seleccione un rango."
+                       [virtualScroll]="true"
+                       formControlName="drawerRangeId">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="denominationTypeId">Denominación</label>
+            <ng-select #select
+                       id="denominationTypeId"
+                       [items]="denominations"
+                       bindLabel="code"
+                       dropdownPosition="auto"
+                       bindValue="id"
+                       labelForId="denominationTypeId"
+                       placeholder="Seleccione una denominación."
+                       [virtualScroll]="true"
+                       formControlName="denominationTypeId">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!drawerForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/drawers" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
