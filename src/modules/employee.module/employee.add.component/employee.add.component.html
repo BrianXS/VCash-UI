@@ -1,0 +1,162 @@
+<br>
+<div class="container">
+  <div class="col-5 offset-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+      <strong>Empleado guardado exitosamente!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+      <strong>Error guardando Empleado!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Agregar Empleado</strong>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="employeeForm">
+          <div class="form-group">
+            <label for="employeeNames">Nombres</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeNames"
+                   formControlName="names"
+                   placeholder="Richardo" />
+          </div>
+          <div class="form-group">
+            <label for="employeeFirstLastName">Primer Apellido</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeFirstLastName"
+                   formControlName="firstLastName"
+                   placeholder="Adrubal" />
+          </div>
+          <div class="form-group">
+            <label for="employeeSecondLastName">Segundo Apellido</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeSecondLastName"
+                   formControlName="secondLastName"
+                   placeholder="Acosta" />
+          </div>
+          <div class="form-group">
+            <label for="employeePicture">Foto</label>
+            <input type="file"
+                   accept="image/jpeg, image/png, image/jpg"
+                   id="employeePicture"
+                   class="form-control-file"
+                   (change)="processFile($event, true)"
+                   formControlName="picture">
+          </div>
+          <div class="form-group">
+            <label for="employeeFirm">Firma</label>
+            <input type="file"
+                   accept="image/jpeg, image/png, image/jpg"
+                   id="employeeFirm"
+                   class="form-control-file"
+                   (change)="processFile($event, false)"
+                   formControlName="sign">
+          </div>
+          <div class="form-group">
+            <label for="employeeCode">Codigo</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeCode"
+                   formControlName="code"
+                   placeholder="BOG0251" />
+          </div>
+          <div class="form-group">
+            <label for="employeeTitle">Cargo</label>
+            <ng-select #select
+                       [items]="titles"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="employeeTitle"
+                       id="employeeTitle"
+                       placeholder="Seleccionar Cargo"
+                       [virtualScroll]="true"
+                       formControlName="title">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="employeeFrom">Desde</label>
+            <input type="date"
+                   id="employeeFrom"
+                   class="form-control"
+                   formControlName="from">
+          </div>
+          <div class="form-group">
+            <label for="employeeDocumentType">Tipo de Documento</label>
+            <ng-select #select
+                       [items]="documentTypes"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="employeeDocumentType"
+                       id="employeeDocumentType"
+                       placeholder="Seleccionar Tipo de Documento"
+                       [virtualScroll]="true"
+                       formControlName="documentType">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="employeeDocument">Nº de Documento</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeDocument"
+                   formControlName="document"
+                   placeholder="37290199" />
+          </div>
+          <div class="form-group">
+            <label for="employeeDocumentDetails">Detalles adicionales</label>
+            <input type="text"
+                   class="form-control"
+                   id="employeeDocumentDetails"
+                   formControlName="documentDetails"
+                   placeholder="Ciudad de Nacimiento / Expedición" />
+          </div>
+          <div class="form-group">
+            <label for="employeeRhesus">Rh</label>
+            <ng-select #select
+                       [items]="rhesus"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="employeeRhesus"
+                       id="employeeRhesus"
+                       placeholder="Seleccionar Tipo de RH"
+                       [virtualScroll]="true"
+                       formControlName="rhesus">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="employeeUnit">Unidad</label>
+            <ng-select #select
+                       [items]="units"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="employeeUnit"
+                       id="employeeUnit"
+                       placeholder="Seleccionar la unidad de negocio"
+                       [virtualScroll]="true"
+                       formControlName="unit">
+            </ng-select>
+          </div>
+          <div class="form-group splitted-buttons">
+            <button type="submit"
+                    (click)="onSubmit()"
+                    [disabled]="!employeeForm.valid"
+                    class="btn btn-primary">Guardar</button>
+            <a routerLink="/home/vehicles" class="btn btn-danger">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

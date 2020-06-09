@@ -49,6 +49,7 @@ import {CustomerEditComponent} from '../../../customer.module/customer.edit.comp
 import {DrawerEditComponent} from '../../../drawer.module/drawer.edit.component/drawer.edit.component';
 import {DrawerRangeEditComponent} from '../../../drawer.range.module/drawer.range.edit.component/drawer.range.edit.component';
 import {FundEditComponent} from '../../../fund.module/fund.edit.component/fund.edit.component';
+import {EmployeeAddComponent} from '../../../employee.module/employee.add.component/employee.add.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -82,6 +83,7 @@ const routes: Routes = [
       {path: 'vehicles/edit/:id', component: VehicleEditComponent},
 
       {path: 'employees', component: EmployeeTableComponent},
+      {path: 'employees/add', component: EmployeeAddComponent},
 
       {path: 'cashiers', component: CashierTableComponent},
       {path: 'cashiers/add', component: CashierAddComponent},

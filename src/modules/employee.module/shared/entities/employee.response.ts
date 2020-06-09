@@ -1,8 +1,8 @@
-import {PersonalDocumentType} from "../../../cashier.module/shared/enums/personal.document.type";
-import {Title} from "../enums/title";
+import {PersonalDocumentType} from '../../../cashier.module/shared/enums/personal.document.type';
 import {BusinessUnit} from 'src/modules/vehicle.module/shared/enums/business.unit';
-import {Rhesus} from "../enums/rhesus";
-import {EmployeeStatus} from "../enums/employee.status";
+import {EmployeeStatus} from '../enums/employee.status';
+import {Rhesus} from '../enums/rhesus';
+import {Title} from '../enums/title';
 
 export class EmployeeResponse {
   public id: number;

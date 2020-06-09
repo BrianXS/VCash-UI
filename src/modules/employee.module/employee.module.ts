@@ -5,14 +5,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import {EmployeeTableComponent} from './employee.table.component/employee.table.component';
 import {EmployeesService} from './shared/services/employees.service';
+import {EmployeeAddComponent} from './employee.add.component/employee.add.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    EmployeeTableComponent
+    EmployeeTableComponent,
+    EmployeeAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     ReactiveFormsModule,
     DataTablesModule
   ],

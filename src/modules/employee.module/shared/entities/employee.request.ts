@@ -1,11 +1,10 @@
-import {PersonalDocumentType} from "../../../cashier.module/shared/enums/personal.document.type";
-import {Title} from "../enums/title";
+import {PersonalDocumentType} from '../../../cashier.module/shared/enums/personal.document.type';
 import {BusinessUnit} from 'src/modules/vehicle.module/shared/enums/business.unit';
-import {Rhesus} from "../enums/rhesus";
-import {EmployeeStatus} from "../enums/employee.status";
+import {EmployeeStatus} from '../enums/employee.status';
+import {Rhesus} from '../enums/rhesus';
+import {Title} from '../enums/title';
 
 export class EmployeeRequest {
-  public Id: number;
   public Names: string;
   public FirstLastName: string;
   public SecondLastName: string;
@@ -20,45 +19,44 @@ export class EmployeeRequest {
   public Document: string;
   public Rhesus: Rhesus;
 
-  public From: Date;
-  public Until: Date;
+  public From: string;
+  public Until: string;
 
   public EmployeeStatus: EmployeeStatus;
   public Unit: BusinessUnit;
 
 
-  constructor(Id: number,
-              Names: string,
+  constructor(Names: string,
               FirstLastName: string,
               SecondLastName: string,
               Code: string,
               Picture: string,
               Sign: string,
-              Title: Title,
+              title: Title,
               BranchId: number,
               DocumentType: PersonalDocumentType,
               DocumentDetails: string,
               Document: string,
-              Rhesus: Rhesus, From: Date,
-              Until: Date,
-              EmployeeStatus: EmployeeStatus,
+              rhesus: Rhesus,
+              From: string,
+              Until: string,
+              employeeStatus: EmployeeStatus,
               Unit: BusinessUnit) {
-    this.Id = Id;
     this.Names = Names;
     this.FirstLastName = FirstLastName;
     this.SecondLastName = SecondLastName;
     this.Code = Code;
     this.Picture = Picture;
     this.Sign = Sign;
-    this.Title = Title;
+    this.Title = title;
     this.BranchId = BranchId;
     this.DocumentType = DocumentType;
     this.DocumentDetails = DocumentDetails;
     this.Document = Document;
-    this.Rhesus = Rhesus;
+    this.Rhesus = rhesus;
     this.From = From;
     this.Until = Until;
-    this.EmployeeStatus = EmployeeStatus;
+    this.EmployeeStatus = employeeStatus;
     this.Unit = Unit;
   }
 }

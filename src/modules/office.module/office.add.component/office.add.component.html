@@ -216,7 +216,7 @@
           <div class="form-group splitted-buttons">
             <button type="submit"
                     (click)="submitForm()"
-
+                    [disabled]="!officeForm.valid"
                     class="btn btn-primary">Guardar</button>
             <a routerLink="/home/offices" class="btn btn-danger">Cancelar</a>
           </div>
