@@ -1,0 +1,208 @@
+<br>
+<form [formGroup]="movementForm">
+  <div class="container">
+    <div class="col-12">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+        <strong>Cliente guardado exitosamente!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+        <strong>Error guardando Cliente!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <strong>Información Básica de la Planilla</strong>
+        </div>
+        <div class="card-body row">
+          <div class="form-group col-4">
+            <label for="movementPayrollNumber">Numero de Solicitud</label>
+            <input type="text"
+                   class="form-control"
+                   id="movementPayrollNumber"
+                   (change)="onPayrollNumberChange($event)"
+                   formControlName="payrollNumber"
+                   placeholder="5620195BOG"/>
+          </div>
+          <div class="form-group col-4">
+            <label for="movementServiceNumber">Numero de Servicio</label>
+            <input type="text"
+                   class="form-control"
+                   id="movementServiceNumber"
+                   formControlName="payrollNumber"
+                   placeholder="10025010002BOG"/>
+          </div>
+          <div class="form-group col-4">
+            <label for="movementBranch">Sucursal</label>
+            <input type="text"
+                   class="form-control"
+                   id="movementBranch"
+                   placeholder="Bogota D.C" disabled/>
+          </div>
+          <div class="form-group col-2 bigger-date">
+            <label for="movementDate">Fecha del Servicio</label>
+            <input type="date"
+                   class="form-control"
+                   id="movementDate"
+                   formControlName="serviceDate"/>
+          </div>
+          <div class="form-group col-2 bigger-date">
+            <label for="movementstartTime">Hora Inicial</label>
+            <input type="time"
+                   class="form-control"
+                   id="movementStartTime"
+                   (focusout)="compareDates()"
+                   formControlName="startTime"/>
+          </div>
+          <div class="form-group col-2 bigger-date">
+            <label for="movementEndTime">Hora Final</label>
+            <input type="time"
+                   class="form-control"
+                   id="movementEndTime"
+                   (focusout)="compareDates()"
+                   formControlName="endTime"/>
+          </div>
+          <div class="form-group col-3">
+            <label for="movementEmployeeId">Recibido Por</label>
+            <ng-select #select
+                       [items]=""
+                       id="movementEmployeeId"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementEmployeeId"
+                       placeholder="Seleccione un empleado"
+                       [virtualScroll]="true"
+                       formControlName="employeeId">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="movementRoute">Ruta</label>
+            <ng-select #select
+                       [items]=""
+                       id="movementRoute"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementRoute"
+                       placeholder="Seleccione una ruta"
+                       [virtualScroll]="true">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="movementType">Tipo de Operacion</label>
+            <ng-select #select
+                       [items]=""
+                       id="movementType"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementType"
+                       placeholder="Seleccione una operacion"
+                       [virtualScroll]="true"
+                       formControlName="movementType">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="businessUnit">Tipo de Unidad</label>
+            <ng-select #select
+                       [items]=""
+                       id="businessUnit"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="businessUnit"
+                       placeholder="Seleccione una unidad"
+                       [virtualScroll]="true"
+                       formControlName="businessUnit">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="serviceType">Tipo de Solicitud</label>
+            <ng-select #select
+                       [items]=""
+                       id="serviceType"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="serviceType"
+                       placeholder="Seleccione un tipo de solicitud"
+                       [virtualScroll]="true"
+                       formControlName="serviceType">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="currency">Divisa</label>
+            <ng-select #select
+                       [items]=""
+                       id="currency"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="currency"
+                       placeholder="Seleccione una divisa"
+                       [virtualScroll]="true"
+                       formControlName="currency">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="mainVehicle">Vehiculo I</label>
+            <ng-select #select
+                       [items]=""
+                       id="mainVehicle"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="mainVehicle"
+                       placeholder="Seleccione un vehiculo"
+                       [virtualScroll]="true"
+                       formControlName="mainVehicle">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="secondaryVehicle">Vehiculo II</label>
+            <ng-select #select
+                       [items]=""
+                       id="secondaryVehicle"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="secondaryVehicle"
+                       placeholder="Seleccione un vehiculo"
+                       [virtualScroll]="true"
+                       formControlName="secondaryVehicle">
+            </ng-select>
+          </div>
+          <div class="form-group col-2 form-group-check">
+            <input class="form-check-input" type="checkbox"
+                   formControlName="custody"
+                   id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Custodia
+            </label>
+          </div>
+          <div class="form-group col-2 form-group-check">
+            <input class="form-check-input" type="checkbox"
+                   formControlName="failed"
+                   id="defaultCheck2">
+            <label class="form-check-label" for="defaultCheck2">
+              Fallido
+            </label>
+          </div>
+          <div class="form-group col-2 form-group-check">
+            <input class="form-check-input" type="checkbox"
+                   formControlName="officeToOffice"
+                   id="defaultCheck3">
+            <label class="form-check-label" for="defaultCheck3">
+              Punto A Punto
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+.bigger-date {
+  padding-right: 10px !important;
+}
+
+.bigger-date input {
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+.form-group-check {
+  padding: 36px 0 0 40px;
+}

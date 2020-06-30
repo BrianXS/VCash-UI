@@ -1,4 +1,4 @@
-import {Route, Router, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {DenominationTableComponent} from '../../../denomination.module/denomination.table.component/denomination.table.component';
@@ -50,6 +50,7 @@ import {DrawerEditComponent} from '../../../drawer.module/drawer.edit.component/
 import {DrawerRangeEditComponent} from '../../../drawer.range.module/drawer.range.edit.component/drawer.range.edit.component';
 import {FundEditComponent} from '../../../fund.module/fund.edit.component/fund.edit.component';
 import {EmployeeAddComponent} from '../../../employee.module/employee.add.component/employee.add.component';
+import {OfficeMovementAddComponent} from "../../../office.movement.module/office.movement.add.component/office.movement.add.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -115,7 +116,9 @@ const routes: Routes = [
 
       {path: 'drawers-and-ranges', component: DrawerRangeTableComponent},
       {path: 'drawers-and-ranges/add', component: DrawerRangeAddComponent},
-      {path: 'drawers-and-ranges/edit/:id', component: DrawerRangeEditComponent}
+      {path: 'drawers-and-ranges/edit/:id', component: DrawerRangeEditComponent},
+
+      {path: 'office-movements/add', component: OfficeMovementAddComponent}
   ]},
 ];
 
