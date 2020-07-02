@@ -38,10 +38,18 @@
           </div>
           <div class="form-group col-4">
             <label for="movementBranch">Sucursal</label>
-            <input type="text"
-                   class="form-control"
-                   id="movementBranch"
-                   placeholder="Bogota D.C" disabled/>
+            <ng-select #select
+                       [items]="branches"
+                       id="movementBranch"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementBranch"
+                       placeholder="Seleccione una sucursal"
+                       [virtualScroll]="true"
+                       (change)="onSucursalSelected()"
+                       formControlName="branchId">
+            </ng-select>
           </div>
           <div class="form-group col-2 bigger-date">
             <label for="movementDate">Fecha del Servicio</label>

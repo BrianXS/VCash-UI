@@ -12,6 +12,10 @@ export class BranchesServices {
     return this.http.get<BranchResponse[]>('branches');
   }
 
+  getAllUserBranches() {
+    return this.http.get<BranchResponse[]>('branches/ByUser/');
+  }
+
   findBranchById(id: number) {
     return this.http.get<BranchResponse>(`branches/${id}`);
   }

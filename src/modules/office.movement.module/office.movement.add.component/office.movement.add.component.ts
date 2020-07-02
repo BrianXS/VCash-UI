@@ -1,20 +1,22 @@
-import {Component, OnInit} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {OfficeMovementRepository} from "../shared/services/office.movement.repository";
-import {VehiclesService} from "../../vehicle.module/shared/services/vehicles.service";
-import {VehicleResponse} from "../../vehicle.module/shared/entities/vehicle.response";
-import {EmployeesService} from "../../employee.module/shared/services/employees.service";
-import {EmployeeResponse} from "../../employee.module/shared/entities/employee.response";
-import {CustomSelectItem} from "../../app.module/shared/entities/custom.select.item";
-import {EnumToArray} from "../../app.module/shared/services/enum.to.array";
-import {Currency} from "../../drawer.range.module/shared/enums/currency";
-import {BusinessUnit} from "../../vehicle.module/shared/enums/business.unit";
-import {MovementType} from "../shared/enum/movement.type";
-import {ServiceType} from "../shared/enum/service.type";
-import {CustomersService} from "../../customer.module/shared/services/customers.service";
-import {CustomerResponse} from "../../customer.module/shared/entities/customer.response";
-import {OfficeResponse} from "../../office.module/shared/entities/office.response";
-import {OfficeService} from "../../office.module/shared/services/office.service";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {OfficeMovementRepository} from '../shared/services/office.movement.repository';
+import {VehiclesService} from '../../vehicle.module/shared/services/vehicles.service';
+import {VehicleResponse} from '../../vehicle.module/shared/entities/vehicle.response';
+import {EmployeesService} from '../../employee.module/shared/services/employees.service';
+import {EmployeeResponse} from '../../employee.module/shared/entities/employee.response';
+import {CustomSelectItem} from '../../app.module/shared/entities/custom.select.item';
+import {EnumToArray} from '../../app.module/shared/services/enum.to.array';
+import {Currency} from '../../drawer.range.module/shared/enums/currency';
+import {BusinessUnit} from '../../vehicle.module/shared/enums/business.unit';
+import {MovementType} from '../shared/enum/movement.type';
+import {ServiceType} from '../shared/enum/service.type';
+import {CustomersService} from '../../customer.module/shared/services/customers.service';
+import {CustomerResponse} from '../../customer.module/shared/entities/customer.response';
+import {OfficeResponse} from '../../office.module/shared/entities/office.response';
+import {OfficeService} from '../../office.module/shared/services/office.service';
+import {BranchResponse} from '../../branch.module/shared/entities/branch.response';
+import {BranchesServices} from '../../branch.module/shared/services/branch.service';
 
 @Component({
   selector: 'office-movement-add-component',
@@ -29,6 +31,7 @@ export class OfficeMovementAddComponent implements OnInit {
   employees: EmployeeResponse[];
   customers: CustomerResponse[];
   vehicles: VehicleResponse[];
+  branches: BranchResponse[];
   offices: OfficeResponse[];
   funds: OfficeResponse[];
 
@@ -42,6 +45,7 @@ export class OfficeMovementAddComponent implements OnInit {
               private employeesService: EmployeesService,
               private customersService: CustomersService,
               private officeService: OfficeService,
+              private branchesService: BranchesServices,
               private enumToArray: EnumToArray) {
   }
 
@@ -49,6 +53,7 @@ export class OfficeMovementAddComponent implements OnInit {
     this.movementForm = new FormGroup({
       payrollNumber: new FormControl(),
       serviceNumber: new FormControl(),
+      branchId: new FormControl(1),
       serviceDate: new FormControl(),
       startTime: new FormControl(),
       endTime: new FormControl(),
@@ -56,7 +61,7 @@ export class OfficeMovementAddComponent implements OnInit {
       movementType: new FormControl(),
       businessUnit: new FormControl(),
       serviceType: new FormControl(),
-      currency: new FormControl(),
+      currency: new FormControl(0),
       mainVehicle: new FormControl(),
       secondaryVehicle: new FormControl(),
       valueType: new FormControl(),
@@ -75,6 +80,9 @@ export class OfficeMovementAddComponent implements OnInit {
       destinationId: new FormControl()
     });
 
+    this.customersService.getAllCustomers().subscribe(response => {
+      this.customers = response;
+    });
     this.vehiclesService.getAllVehicles().subscribe(response => {
       this.vehicles = response;
     });
@@ -84,27 +92,45 @@ export class OfficeMovementAddComponent implements OnInit {
       });
       this.employees = response;
     });
-    this.customersService.getAllCustomers().subscribe(response => {
-      this.customers = response;
+    this.branchesService.getAllUserBranches().subscribe(response => {
+      this.branches = response;
     });
-    this.currencies = this.enumToArray.convert(Currency);
     this.businessUnits = this.enumToArray.convert(BusinessUnit);
     this.movementTypes = this.enumToArray.convert(MovementType);
     this.serviceTypes = this.enumToArray.convert(ServiceType);
+    this.currencies = this.enumToArray.convert(Currency);
   }
 
-  onPayrollNumberChange(evt){
+  onSucursalSelected() {
+    const clientOriginId = parseInt(this.movementForm.value.clientOriginId, 10);
+    const branch = parseInt(this.movementForm.value.branchId, 10);
+    const currency = parseInt(this.movementForm.value.currency, 10);
+
+    if (!isNaN(clientOriginId) && !isNaN(branch) && !isNaN(currency)) {
+      this.movementForm.controls.originId.reset();
+      this.officeService
+        .findOfficeByClientIdAndBranchId(clientOriginId, branch)
+        .subscribe(response => {
+          this.offices = response;
+        });
+    } else {
+      this.movementForm.controls.clientDestinationId.reset();
+      this.movementForm.controls.clientOriginId.reset();
+      this.movementForm.controls.originId.reset();
+    }
+  }
+  onPayrollNumberChange(evt) {
     this.officeMovementRepository.verifyUniquenessOfIncomingMovement(evt.target.value)
       .subscribe(response => {
-        if(response){
+        if (response) {
           alert('Por favor inserte un numero de planilla diferente');
           this.movementForm.patchValue({payrollNumber: ''});
         }
       });
   }
-  compareDates(){
-    const startTime = (<HTMLInputElement> document.getElementById('movementStartTime')).value;
-    const endTime = (<HTMLInputElement> document.getElementById('movementEndTime')).value;
+  compareDates() {
+    const startTime = (document.getElementById('movementStartTime') as HTMLInputElement).value;
+    const endTime = (document.getElementById('movementEndTime') as HTMLInputElement).value;
 
     let splitedStartTime;
     let splitedEndTime;
@@ -112,80 +138,87 @@ export class OfficeMovementAddComponent implements OnInit {
     let totalSecondsStartTime = 0;
     let totalSecondsEndTime = 0;
 
-    if(startTime !== null) {
+    if (startTime !== null) {
       splitedStartTime =  startTime.split(':');
       totalSecondsStartTime =
         parseInt(splitedStartTime[0], 10) * 3600 + parseInt(splitedStartTime[1], 10) * 60;
     }
 
-    if(endTime !== null) {
+    if (endTime !== null) {
       splitedEndTime   =  endTime.split(':');
       totalSecondsEndTime =
         parseInt(splitedEndTime[0], 10) * 3600 + parseInt(splitedEndTime[1], 10) * 60;
     }
 
-    if(endTime && startTime && (totalSecondsEndTime <= totalSecondsStartTime)){
-      this.movementForm.patchValue({startTime: null, endTime: null})
+    if (endTime && startTime && (totalSecondsEndTime <= totalSecondsStartTime)) {
+      this.movementForm.patchValue({startTime: null, endTime: null});
       alert('la hora de finalizacion debe ser mayor a la de inicio');
     }
   }
-  onCustodySelected(){
-    if(this.movementForm.value.custody){
+  onCustodySelected() {
+    if (this.movementForm.value.custody) {
       this.movementForm.patchValue({
         failed: false,
         officeToOffice: false
       });
-      this.movementForm.controls['failed'].disable();
-      this.movementForm.controls['officeToOffice'].disable();
+      this.movementForm.controls.failed.disable();
+      this.movementForm.controls.officeToOffice.disable();
     } else {
-      this.movementForm.controls['failed'].enable();
-      this.movementForm.controls['officeToOffice'].enable();
+      this.movementForm.controls.failed.enable();
+      this.movementForm.controls.officeToOffice.enable();
     }
   }
-  onFailureSelected(){
-    if(this.movementForm.value.failed){
+  onFailureSelected() {
+    if (this.movementForm.value.failed) {
       this.movementForm.patchValue({
         custody: false,
         officeToOffice: false
       });
-      this.movementForm.controls['custody'].disable();
-      this.movementForm.controls['officeToOffice'].disable();
+      this.movementForm.controls.custody.disable();
+      this.movementForm.controls.officeToOffice.disable();
     } else {
-      this.movementForm.controls['custody'].enable();
-      this.movementForm.controls['officeToOffice'].enable();
+      this.movementForm.controls.custody.enable();
+      this.movementForm.controls.officeToOffice.enable();
     }
   }
-  onOfficeToOfficeSelected(){
-    if(this.movementForm.value.officeToOffice){
+  onOfficeToOfficeSelected() {
+    if (this.movementForm.value.officeToOffice) {
       this.movementForm.patchValue({
         custody: false,
         failed: false
       });
-      this.movementForm.controls['custody'].disable();
-      this.movementForm.controls['failed'].disable();
+      this.movementForm.controls.custody.disable();
+      this.movementForm.controls.failed.disable();
     } else {
-      this.movementForm.controls['custody'].enable();
-      this.movementForm.controls['failed'].enable();
+      this.movementForm.controls.custody.enable();
+      this.movementForm.controls.failed.enable();
     }
   }
-
-  onClientChange(){
+  onClientChange() {
     const clientOriginId = parseInt(this.movementForm.value.clientOriginId, 10);
+    const branch = parseInt(this.movementForm.value.branchId, 10);
+    const currency = parseInt(this.movementForm.value.currency, 10);
+
     this.movementForm.patchValue({clientDestinationId: clientOriginId});
 
-    if(!isNaN(clientOriginId)){
+    if (!isNaN(clientOriginId) && !isNaN(branch) && !isNaN(currency)) {
       this.officeService
-        .findOfficeByClientIdAndBranchId(clientOriginId, 32)
+        .findOfficeByClientIdAndBranchId(clientOriginId, branch)
         .subscribe(response => {
-          console.log(response);
           this.offices = response;
         });
+    } else if (isNaN(branch) || isNaN(clientOriginId) || isNaN(currency)) {
+      alert('Verifique que la sucursal, divisa y cliente hayan sidos seleccionados');
+      this.movementForm.controls.clientDestinationId.reset();
+      this.movementForm.controls.clientOriginId.reset();
+      this.movementForm.controls.originId.reset();
     } else {
+      this.movementForm.controls.originId.reset();
       this.offices = [];
-      this.movementForm.controls['originId'].reset();
     }
   }
-  onOfficeChange(){}
-  onFundChange(){}
+
+  onOfficeChange() {}
+  onFundChange() {}
 }
 
