@@ -9,6 +9,7 @@ export class EmployeeResponse {
   public names: string;
   public firstLastName: string;
   public secondLastName: string;
+
   public code: string;
   public picture: string;
   public sign: string;

@@ -16,6 +16,10 @@ export class OfficeService {
     return this.http.get<OfficeResponse>(`offices/${id}`);
   }
 
+  findOfficeByClientIdAndBranchId(clientId: number, branchId: number) {
+    return this.http.get<OfficeResponse[]>(`offices/ByClientIdAndBranchId/${clientId}/${branchId}`);
+  }
+
   createOffice(officeData: OfficeRequest) {
     return this.http.post<OfficeResponse>(`offices`, officeData);
   }

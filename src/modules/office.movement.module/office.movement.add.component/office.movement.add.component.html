@@ -69,9 +69,9 @@
           <div class="form-group col-3">
             <label for="movementEmployeeId">Recibido Por</label>
             <ng-select #select
-                       [items]=""
+                       [items]="employees"
                        id="movementEmployeeId"
-                       bindLabel="name"
+                       bindLabel="names"
                        bindValue="id"
                        dropdownPosition="auto"
                        labelForId="movementEmployeeId"
@@ -96,7 +96,7 @@
           <div class="form-group col-3">
             <label for="movementType">Tipo de Operacion</label>
             <ng-select #select
-                       [items]=""
+                       [items]="movementTypes"
                        id="movementType"
                        bindLabel="name"
                        bindValue="id"
@@ -110,7 +110,7 @@
           <div class="form-group col-3">
             <label for="businessUnit">Tipo de Unidad</label>
             <ng-select #select
-                       [items]=""
+                       [items]="businessUnits"
                        id="businessUnit"
                        bindLabel="name"
                        bindValue="id"
@@ -124,7 +124,7 @@
           <div class="form-group col-3">
             <label for="serviceType">Tipo de Solicitud</label>
             <ng-select #select
-                       [items]=""
+                       [items]="serviceTypes"
                        id="serviceType"
                        bindLabel="name"
                        bindValue="id"
@@ -138,7 +138,7 @@
           <div class="form-group col-3">
             <label for="currency">Divisa</label>
             <ng-select #select
-                       [items]=""
+                       [items]="currencies"
                        id="currency"
                        bindLabel="name"
                        bindValue="id"
@@ -152,9 +152,9 @@
           <div class="form-group col-3">
             <label for="mainVehicle">Vehiculo I</label>
             <ng-select #select
-                       [items]=""
+                       [items]="vehicles"
                        id="mainVehicle"
-                       bindLabel="name"
+                       bindLabel="plate"
                        bindValue="id"
                        dropdownPosition="auto"
                        labelForId="mainVehicle"
@@ -166,9 +166,9 @@
           <div class="form-group col-3">
             <label for="secondaryVehicle">Vehiculo II</label>
             <ng-select #select
-                       [items]=""
+                       [items]="vehicles"
                        id="secondaryVehicle"
-                       bindLabel="name"
+                       bindLabel="plate"
                        bindValue="id"
                        dropdownPosition="auto"
                        labelForId="secondaryVehicle"
@@ -180,6 +180,7 @@
           <div class="form-group col-2 form-group-check">
             <input class="form-check-input" type="checkbox"
                    formControlName="custody"
+                   (change)="onCustodySelected()"
                    id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
               Custodia
@@ -188,6 +189,7 @@
           <div class="form-group col-2 form-group-check">
             <input class="form-check-input" type="checkbox"
                    formControlName="failed"
+                   (change)="onFailureSelected()"
                    id="defaultCheck2">
             <label class="form-check-label" for="defaultCheck2">
               Fallido
@@ -196,10 +198,88 @@
           <div class="form-group col-2 form-group-check">
             <input class="form-check-input" type="checkbox"
                    formControlName="officeToOffice"
+                   (change)="onOfficeToOfficeSelected()"
                    id="defaultCheck3">
             <label class="form-check-label" for="defaultCheck3">
               Punto A Punto
             </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Información de los puntos</strong>
+        </div>
+        <div class="card-body row">
+          <div class="form-group col-3">
+            <label for="movementOriginClient">Cliente de Origen</label>
+            <ng-select #select
+                       [items]="customers"
+                       id="movementOriginClient"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementOriginClient"
+                       placeholder="Seleccione un cliente"
+                       (change)="onClientChange()"
+                       formControlName="clientOriginId"
+                       [virtualScroll]="true">
+            </ng-select>
+          </div>
+          <div class="form-group col-6">
+            <label for="originId">Punto de Origen</label>
+            <ng-select #select
+                       [items]="offices"
+                       id="originId"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="originId"
+                       placeholder="Seleccione un punto de origen"
+                       [virtualScroll]="true"
+                       formControlName="originId">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="originCity">Ciudad De Origen</label>
+            <input type="text" id="originCity" class="form-control" disabled>
+          </div>
+          <div class="form-group col-3">
+            <label for="movementDestinationClient">Cliente de Destino</label>
+            <ng-select #select
+                       [items]="customers"
+                       id="movementDestinationClient"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="movementDestinationClient"
+                       placeholder="Seleccione un cliente"
+                       formControlName="clientDestinationId"
+                       [virtualScroll]="true">
+            </ng-select>
+          </div>
+          <div class="form-group col-6">
+            <label for="destinationId">Fondo de Destino</label>
+            <ng-select #select
+                       [items]=""
+                       id="destinationId"
+                       bindLabel="name"
+                       bindValue="id"
+                       dropdownPosition="auto"
+                       labelForId="destinationId"
+                       placeholder="Seleccione un fondo de destino"
+                       formControlName="destinationId"
+                       [virtualScroll]="true">
+            </ng-select>
+          </div>
+          <div class="form-group col-3">
+            <label for="originCity">Ciudad De Destino</label>
+            <input type="text" id="destinationCity" class="form-control" disabled>
           </div>
         </div>
       </div>
