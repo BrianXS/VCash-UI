@@ -200,12 +200,15 @@ export class OfficeMovementAddComponent implements OnInit {
     const currency = parseInt(this.movementForm.value.currency, 10);
 
     this.movementForm.patchValue({clientDestinationId: clientOriginId});
+    this.movementForm.controls.originId.reset();
+    this.movementForm.controls.destinationId.reset();
 
     if (!isNaN(clientOriginId) && !isNaN(branch) && !isNaN(currency)) {
       this.officeService
         .findOfficeByClientIdAndBranchId(clientOriginId, branch)
         .subscribe(response => {
-          this.offices = response;
+          this.offices = response.filter(x => !x.isFund);
+          this.funds = response.filter(x => x.isFund);
         });
     } else if (isNaN(branch) || isNaN(clientOriginId) || isNaN(currency)) {
       alert('Verifique que la sucursal, divisa y cliente hayan sidos seleccionados');
@@ -218,7 +221,18 @@ export class OfficeMovementAddComponent implements OnInit {
     }
   }
 
-  onOfficeChange() {}
-  onFundChange() {}
+  onOfficeChange() {
+    var currentOffice = this.offices.find(x => x.id == parseInt(this.movementForm.value.originId, 10));
+
+    (<HTMLInputElement>document.getElementById('originCity')).value =
+      currentOffice != null ? currentOffice.city : '';
+  }
+  onFundChange() {
+    var currentFund = this.funds
+      .find(x => x.id == parseInt(this.movementForm.value.destinationId, 10));
+
+    (<HTMLInputElement>document.getElementById('destinationCity')).value =
+      currentFund != null ? currentFund.city : '';
+  }
 }
 

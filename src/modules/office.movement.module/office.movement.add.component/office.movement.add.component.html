@@ -250,6 +250,7 @@
                        labelForId="originId"
                        placeholder="Seleccione un punto de origen"
                        [virtualScroll]="true"
+                       (change)="onOfficeChange()"
                        formControlName="originId">
             </ng-select>
           </div>
@@ -274,7 +275,7 @@
           <div class="form-group col-6">
             <label for="destinationId">Fondo de Destino</label>
             <ng-select #select
-                       [items]=""
+                       [items]="funds"
                        id="destinationId"
                        bindLabel="name"
                        bindValue="id"
@@ -282,6 +283,7 @@
                        labelForId="destinationId"
                        placeholder="Seleccione un fondo de destino"
                        formControlName="destinationId"
+                       (change)="onFundChange()"
                        [virtualScroll]="true">
             </ng-select>
           </div>
