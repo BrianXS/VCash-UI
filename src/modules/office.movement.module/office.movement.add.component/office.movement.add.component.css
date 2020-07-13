@@ -10,3 +10,11 @@
 .form-group-check {
   padding: 36px 0 0 40px;
 }
+
+.splitted-buttons > button:first-child{
+  margin-right: 5%;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

@@ -12,6 +12,10 @@ export class CustomersService {
     return this.http.get<CustomerResponse[]>('Customers');
   }
 
+  getAllCustomersWithoutRelationships() {
+    return this.http.get<CustomerResponse[]>('Customers/WithoutRelationships');
+  }
+
   findCustomerById(id: number) {
     return this.http.get<CustomerResponse>(`Customers/${id}`);
   }

@@ -17,6 +17,9 @@ import {OfficeResponse} from '../../office.module/shared/entities/office.respons
 import {OfficeService} from '../../office.module/shared/services/office.service';
 import {BranchResponse} from '../../branch.module/shared/entities/branch.response';
 import {BranchesServices} from '../../branch.module/shared/services/branch.service';
+import {ValueType} from "../shared/enum/value.type";
+import {Coverage} from "../../office.module/shared/enums/Coverage";
+import {OfficeMovementRequest} from "../shared/entities/office.movement.request";
 
 @Component({
   selector: 'office-movement-add-component',
@@ -39,6 +42,8 @@ export class OfficeMovementAddComponent implements OnInit {
   movementTypes: CustomSelectItem[];
   serviceTypes: CustomSelectItem[];
   currencies: CustomSelectItem[];
+  valuetypes: CustomSelectItem[];
+  coverages: CustomSelectItem[];
 
   constructor(private officeMovementRepository: OfficeMovementRepository,
               private vehiclesService: VehiclesService,
@@ -51,36 +56,37 @@ export class OfficeMovementAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.movementForm = new FormGroup({
-      payrollNumber: new FormControl(),
-      serviceNumber: new FormControl(),
-      branchId: new FormControl(1),
-      serviceDate: new FormControl(),
-      startTime: new FormControl(),
-      endTime: new FormControl(),
-      employeeId: new FormControl(),
-      movementType: new FormControl(),
-      businessUnit: new FormControl(),
-      serviceType: new FormControl(),
-      currency: new FormControl(0),
-      mainVehicle: new FormControl(),
-      secondaryVehicle: new FormControl(),
-      valueType: new FormControl(),
-      amountOfContainers: new FormControl(),
-      declaredBankNotes: new FormControl(),
-      declaredCoins: new FormControl(),
-      declaredCash: new FormControl(),
+      payrollNumber: new FormControl(null, [Validators.required]),
+      serviceNumber: new FormControl(null, [Validators.required]),
+      branchId: new FormControl(null, [Validators.required]),
+      serviceDate: new FormControl(null, [Validators.required]),
+      startTime: new FormControl(null, [Validators.required]),
+      endTime: new FormControl(null, [Validators.required]),
+      employeeId: new FormControl(null, [Validators.required]),
+      movementType: new FormControl(null, [Validators.required]),
+      businessUnit: new FormControl(null, [Validators.required]),
+      serviceType: new FormControl(null, [Validators.required]),
+      currency: new FormControl(0, [Validators.required]),
+      mainVehicle: new FormControl(null, [Validators.required]),
+      secondaryVehicle: new FormControl(null),
       custody: new FormControl(),
       failed: new FormControl(),
       officeToOffice: new FormControl(),
-      counted: new FormControl(),
-      failureId: new FormControl(),
       clientOriginId: new FormControl(),
       clientDestinationId: new FormControl({value: null, disabled: true}),
-      originId: new FormControl(),
-      destinationId: new FormControl()
+      originId: new FormControl(null, [Validators.required]),
+      destinationId: new FormControl(null, [Validators.required]),
+      valueType: new FormControl({value: null}, [Validators.required]),
+      coverage: new FormControl({value: null, disabled: true}),
+      declaredBankNotes: new FormControl(null, [Validators.required]),
+      declaredCoins: new FormControl(null, [Validators.required]),
+      declaredCash: new FormControl(null),
+      amountOfContainers: new FormControl(null, [Validators.required]),
+      counted: new FormControl(),
+      failureId: new FormControl()
     });
 
-    this.customersService.getAllCustomers().subscribe(response => {
+    this.customersService.getAllCustomersWithoutRelationships().subscribe(response => {
       this.customers = response;
     });
     this.vehiclesService.getAllVehicles().subscribe(response => {
@@ -99,6 +105,8 @@ export class OfficeMovementAddComponent implements OnInit {
     this.movementTypes = this.enumToArray.convert(MovementType);
     this.serviceTypes = this.enumToArray.convert(ServiceType);
     this.currencies = this.enumToArray.convert(Currency);
+    this.valuetypes = this.enumToArray.convert(ValueType);
+    this.coverages = this.enumToArray.convert(Coverage);
   }
 
   onSucursalSelected() {
@@ -207,32 +215,67 @@ export class OfficeMovementAddComponent implements OnInit {
       this.officeService
         .findOfficeByClientIdAndBranchId(clientOriginId, branch)
         .subscribe(response => {
-          this.offices = response.filter(x => !x.isFund);
-          this.funds = response.filter(x => x.isFund);
+          this.offices = response;
         });
+
+      this.officeService
+        .findFundsByClientIdAndBranchId(clientOriginId, branch)
+        .subscribe(response => {
+          this.funds = response;
+        });
+
     } else if (isNaN(branch) || isNaN(clientOriginId) || isNaN(currency)) {
       alert('Verifique que la sucursal, divisa y cliente hayan sidos seleccionados');
+
+      this.valuetypes = this.enumToArray.convert(ValueType);
+      this.valuetypes.forEach(x => x.disabled = true);
+
       this.movementForm.controls.clientDestinationId.reset();
       this.movementForm.controls.clientOriginId.reset();
+      this.movementForm.controls.valueType.reset();
       this.movementForm.controls.originId.reset();
+
+      this.offices = [];
+      this.funds = [];
     } else {
       this.movementForm.controls.originId.reset();
       this.offices = [];
     }
   }
-
   onOfficeChange() {
-    var currentOffice = this.offices.find(x => x.id == parseInt(this.movementForm.value.originId, 10));
+    const currentOffice = this.offices.find(x => x.id == parseInt(this.movementForm.value.originId, 10));
+    const valueTypeSubstitution = this.enumToArray.convert(ValueType);
+    this.movementForm.controls.valueType.reset();
+    this.movementForm.controls.coverage.reset();
+
+    if(currentOffice != null && !currentOffice.hasDocuments){
+      valueTypeSubstitution[3].disabled =  true;
+    }
+
+    if(currentOffice != null && !currentOffice.hasCheques){
+      valueTypeSubstitution[2].disabled =  true;
+    }
+
+    if(currentOffice != null && !currentOffice.hasEnvelopes){
+      valueTypeSubstitution[1].disabled =  true;
+    }
+
+    this.valuetypes = valueTypeSubstitution;
 
     (<HTMLInputElement>document.getElementById('originCity')).value =
       currentOffice != null ? currentOffice.city : '';
+
+    this.movementForm.patchValue({coverage: currentOffice != null ? currentOffice.coverage : null});
   }
   onFundChange() {
-    var currentFund = this.funds
+    const currentFund = this.funds
       .find(x => x.id == parseInt(this.movementForm.value.destinationId, 10));
 
     (<HTMLInputElement>document.getElementById('destinationCity')).value =
       currentFund != null ? currentFund.city : '';
   }
-}
 
+  onSubmit() {
+    const movementData = new OfficeMovementRequest();
+  }
+}

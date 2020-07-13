@@ -20,6 +20,10 @@ export class OfficeService {
     return this.http.get<OfficeResponse[]>(`offices/ByClientIdAndBranchId/${clientId}/${branchId}`);
   }
 
+  findFundsByClientIdAndBranchId(clientId: number, branchId: number) {
+    return this.http.get<OfficeResponse[]>(`offices/FundsByClientIdAndBranchId/${clientId}/${branchId}`);
+  }
+
   createOffice(officeData: OfficeRequest) {
     return this.http.post<OfficeResponse>(`offices`, officeData);
   }
